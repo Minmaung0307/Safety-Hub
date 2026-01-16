@@ -165,3 +165,22 @@ async function submitReport() {
 window.onload = () => {
     showView('home');
 };
+
+// App စဖွင့်ချိန်တွင် Onboarding စစ်ဆေးခြင်း
+window.addEventListener('load', () => {
+    const isFirstTime = localStorage.getItem('isFirstTimeUser');
+    
+    if (isFirstTime === null) {
+        // ပထမဆုံးအကြိမ်ဆိုရင် Modal ကို ပြမယ်
+        document.getElementById('onboarding-modal').classList.remove('hidden');
+    }
+});
+
+function closeOnboarding() {
+    // Modal ကို ပိတ်ပြီး Guide View ကို ပြမယ်
+    document.getElementById('onboarding-modal').classList.add('hidden');
+    localStorage.setItem('isFirstTimeUser', 'false'); // နောက်တစ်ခါ ထပ်မပေါ်အောင် သိမ်းထားမယ်
+    showView('guide');
+}
+
+// ပင်မစာမျက်နှာ (Home) မှာ ပြန်ကြည့်ဖို့ ခလုတ်ထည့်ရန် showView ထဲမှာ ထည့်သွင်းနိုင်သည်

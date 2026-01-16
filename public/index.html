@@ -7,6 +7,19 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>လုံခြုံဘေးကင်းရေး App</title>
+
+    <!-- Favicon (Browser tab မှာ ပေါ်ဖို့) -->
+    <link rel="icon" type="image/x-icon" href="/logo.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo-192.png" />
+
+    <!-- Apple/iOS အတွက် (iPhone မှာ App သွင်းရင် ပေါ်ဖို့) -->
+    <link rel="apple-touch-icon" href="/logo-192.png" />
+
+    <!-- PWA Manifest (Android နဲ့ တခြားနေရာတွေမှာ install icon ပေါ်ဖို့) -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="theme-color" content="#1e3a8a" />
+
     <!-- CSS & Fonts -->
     <link rel="stylesheet" href="style.css" />
     <link
@@ -25,6 +38,24 @@
     <div id="app-container">
       <!-- View 1: Home -->
       <section id="home-view" class="view active">
+        <!-- installation icon -->
+        <div
+          id="install-app-btn"
+          class="card hidden"
+          style="background: #dcfce7; border: 1px solid #16a34a"
+        >
+          <p style="margin: 0 0 10px 0; font-weight: bold; color: #16a34a">
+            App ကို ဖုန်းထဲမှာ ထည့်သွင်းထားမလား?
+          </p>
+          <button
+            onclick="handleAppInstall()"
+            class="btn-primary"
+            style="background: #16a34a"
+          >
+            <i class="fas fa-download"></i> App အဖြစ် သွင်းမည်
+          </button>
+        </div>
+
         <div class="sos-wrapper">
           <button id="sos-btn" class="sos-circle">SOS</button>
           <p>အရေးပေါ်အတွက် ၃ စက္ကန့် ဖိထားပါ</p>
@@ -58,6 +89,10 @@
           </div>
           <div class="menu-box" onclick="showView('settings')">
             <i class="fas fa-cog"></i><span>အချက်အလက်များ</span>
+          </div>
+          <div class="menu-box" onclick="showView('guide')">
+            <i class="fas fa-question-circle" style="color: #0891b2"></i>
+            <span>အသုံးပြုပုံ</span>
           </div>
         </div>
       </section>
@@ -206,6 +241,69 @@
           </button>
         </div>
       </section>
+
+      <!-- View: User Guide (လမ်းညွှန်ချက်) -->
+      <section id="guide-view" class="view">
+        <button class="back-btn" onclick="showView('home')">
+          ← ပင်မစာမျက်နှာ
+        </button>
+        <h2 class="section-title">App အသုံးပြုပုံ လမ်းညွှန်</h2>
+
+        <div class="card guide-step">
+          <div class="step-num">၁</div>
+          <h4>အရေးပေါ်ဖုန်းနံပါတ်များ ထည့်သွင်းပါ</h4>
+          <p>
+            ဦးစွာ <strong>'ပြင်ဆင်ရန်' (Settings)</strong> သို့သွားပြီး
+            မိသားစုဖုန်းနံပါတ် (၂) ခုနှင့် ရှေ့နေဖုန်းနံပါတ်ကို ရိုက်ထည့်ပြီး
+            သိမ်းဆည်းပါ။ ဒါမှသာ SOS ခလုတ်က အလုပ်လုပ်မည်ဖြစ်သည်။
+          </p>
+        </div>
+
+        <div class="card guide-step">
+          <div class="step-num">၂</div>
+          <h4>SOS ခလုတ် အသုံးပြုပုံ</h4>
+          <p>
+            အရေးပေါ်အခြေအနေတွင်
+            <strong>SOS ခလုတ်ကို ၃ စက္ကန့်ကြာ</strong> ဖိထားပါ။ App က
+            သင်၏တည်နေရာကို Database သို့ ပို့ပေးမည်ဖြစ်ပြီး ဖုန်းခေါ်ဆိုရန်
+            ခလုတ်များ ပေါ်လာပါလိမ့်မည်။
+          </p>
+        </div>
+
+        <div class="card guide-step">
+          <div class="step-num">၃</div>
+          <h4>အခွင့်အရေးများကို ဖတ်ရှုပါ</h4>
+          <p>
+            <strong>'အခွင့်အရေး'</strong> ကဏ္ဍတွင် ICE နှင့် ထိပ်တိုက်တွေ့လျှင်
+            ဘာလုပ်ရမလဲဆိုသည်ကို ကြိုတင်ဖတ်ရှုထားပါ။ တံခါးမဖွင့်ရန်နှင့်
+            စကားမပြောဘဲနေပိုင်ခွင့်ကို သေချာမှတ်သားထားပါ။
+          </p>
+        </div>
+
+        <div class="card guide-step">
+          <div class="step-num">၄</div>
+          <h4>တည်နေရာ (Location) ဖွင့်ထားပါ</h4>
+          <p>
+            SOS စနစ် ကောင်းမွန်စွာ အလုပ်လုပ်ရန် သင့်ဖုန်း၏
+            <strong>Location (GPS)</strong> ကို အမြဲတမ်း ဖွင့်ထားပေးရန်
+            လိုအပ်ပါသည်။
+          </p>
+        </div>
+      </section>
+
+      <!-- Onboarding Modal (ပထမဆုံးအကြိမ် ဝင်လာသူများအတွက် ပေါ်မည့်စာ) -->
+      <div id="onboarding-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+          <h3>မင်္ဂလာပါ 👋</h3>
+          <p>
+            Safety Hub မှ ကြိုဆိုပါသည်။ လူကြီးမင်း ဘေးကင်းလုံခြုံစေရန်
+            အသုံးမပြုမီ လမ်းညွှန်ချက်ကို အရင်ဖတ်ပေးပါ။
+          </p>
+          <button onclick="closeOnboarding()" class="btn-primary">
+            လမ်းညွှန်ချက် ဖတ်မည်
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Bottom Navigation -->
@@ -226,6 +324,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
     <script src="firebase-config.js"></script>
+    <script src="pwa.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

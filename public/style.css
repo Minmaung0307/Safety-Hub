@@ -136,3 +136,44 @@ textarea {
     border-radius: 15px; padding: 12px; font-size: 16px; 
     font-family: inherit; background: var(--input-bg);
 }
+
+/* Guide Steps Design */
+.guide-step {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    border-left: 4px solid var(--main);
+}
+.step-num {
+    background: var(--main);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.guide-step h4 { margin: 0 0 5px 0; color: var(--main); }
+.guide-step p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+
+/* Modal Overlay (Welcome Popup) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    width: 85%;
+    max-width: 400px;
+    text-align: center;
+}

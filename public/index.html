@@ -29,8 +29,22 @@
   </head>
   <body>
     <!-- App Header -->
-    <header class="main-header" id="admin-secret-trigger">
-      <div class="logo">SAFETY HUB</div>
+    <header class="main-header">
+      <div class="header-top">
+        <!-- <div class="logo" id="admin-secret-trigger" style="cursor: pointer; user-select: none;">SAFETY HUB</div> -->
+        <!-- Logo Image with Admin Trigger -->
+        <div class="logo" id="admin-secret-trigger" style="user-select: none; -webkit-touch-callout: none;">
+            <img src="/logo.svg" alt="Safety Hub Logo" class="header-logo-img">
+        </div>
+        <!-- Support Button in Header -->
+        <button
+          class="support-header-btn"
+          onclick="showView('support')"
+          title="Support"
+        >
+          <i class="fas fa-heart"></i>
+        </button>
+      </div>
       <p>သင်နှင့်အတူ ကျွန်ုပ်တို့ရှိသည်</p>
     </header>
 
@@ -814,6 +828,83 @@
         </div>
       </section>
 
+      <!-- View: Support (Support the Developer) -->
+      <section id="support-view" class="view">
+        <button class="back-btn" onclick="showView('home')">← နောက်သို့</button>
+        <div class="card support-card">
+          <div class="support-icon">☕</div>
+          <h2 class="section-title" style="margin-top: 0">
+            Support Safety Hub
+          </h2>
+          <p style="font-size: 14px; color: #64748b; margin-bottom: 25px">
+            ဤ App ကို ဆက်လက်ရှင်သန်စေရန်နှင့် Server ဖိုး၊ Maintenance
+            စရိတ်များအတွက် အောက်ပါအတိုင်း Support ပေးနိုင်ပါသည်။
+          </p>
+
+          <div class="support-options">
+            <!-- $5 Coffee -->
+            <a
+              href="https://buy.stripe.com/5kQ28r5fCa9E8pj9VE1B601"
+              target="_blank"
+              class="support-btn coffee"
+            >
+              <span>☕ Coffee</span>
+              <strong>$5</strong>
+            </a>
+
+            <!-- $10 Burger -->
+            <a
+              href="https://buy.stripe.com/14AcN57nKgy2cFzd7Q1B606"
+              target="_blank"
+              class="support-btn burger"
+            >
+              <span>🍔 Burger</span>
+              <strong>$10</strong>
+            </a>
+
+            <!-- $15 Big Meal -->
+            <a
+              href="https://buy.stripe.com/5kQ6oHdM85To0WR3xg1B607"
+              target="_blank"
+              class="support-btn meal"
+            >
+              <span>🍱 Big Meal</span>
+              <strong>$15</strong>
+            </a>
+          </div>
+
+          <p style="font-size: 11px; color: #94a3b8; margin-top: 20px">
+            * Stripe မှတစ်ဆင့် လုံခြုံစိတ်ချစွာ ပေးချေနိုင်ပါသည်။
+            ကိုယ်ရေးအချက်အလက်များ တောင်းခံမည်မဟုတ်ပါ။
+          </p>
+        </div>
+      </section>
+
+      <!-- အသစ်တိုးလိုက်သော Menu/Resources View -->
+      <section id="menu-view" class="view">
+        <h2 class="section-title">အချက်အလက်နှင့် ရင်းမြစ်များ</h2>
+        <div class="quick-menu">
+          <div class="menu-box" onclick="showView('rights')">
+            <i class="fas fa-gavel"></i><span>အခွင့်အရေး</span>
+          </div>
+          <div class="menu-box" onclick="showView('legal')">
+            <i class="fas fa-user-tie"></i><span>ရှေ့နေများ</span>
+          </div>
+          <div class="menu-box" onclick="showView('prep')">
+            <i class="fas fa-briefcase"></i><span>ကြိုတင်ပြင်ဆင်</span>
+          </div>
+          <div class="menu-box" onclick="showView('report')">
+            <i class="fas fa-plus-circle"></i><span>သတင်းပို့ရန်</span>
+          </div>
+          <div class="menu-box" onclick="showView('news')">
+            <i class="fas fa-newspaper"></i><span>အချက်အလက်များ</span>
+          </div>
+          <div class="menu-box" onclick="showView('guide')">
+            <i class="fas fa-question-circle"></i><span>အသုံးပြုပုံ</span>
+          </div>
+        </div>
+      </section>
+
       <!-- Onboarding Modal (ပထမဆုံးအကြိမ် ဝင်လာသူများအတွက် ပေါ်မည့်စာ) -->
       <div id="onboarding-modal" class="modal-overlay hidden">
         <div class="modal-content">
@@ -837,12 +928,23 @@
       <div class="nav-btn" onclick="showView('news')">
         <i class="fas fa-newspaper"></i><span>သတင်း</span>
       </div>
-      <div class="nav-btn" onclick="showView('report')">
+      <!-- <div class="nav-btn" onclick="showView('report')">
         <i class="fas fa-plus-circle"></i><span>သတင်းပို့</span>
-      </div>
+      </div> -->
       <div class="nav-btn" onclick="showView('chat')">
         <i class="fas fa-comments"></i><span>စကားဝိုင်း</span>
       </div>
+      <div class="nav-btn" onclick="showView('menu')">
+        <i class="fas fa-th-large"></i><span>ရင်းမြစ်များ</span>
+      </div>
+      <!-- <div
+        class="menu-box"
+        onclick="showView('support')"
+        style="background: #fff7ed; border: 1px solid #fdba74"
+      >
+        <i class="fas fa-heart" style="color: #ea580c"></i>
+        <span>Support</span>
+      </div> -->
     </nav>
 
     <!-- Scripts -->

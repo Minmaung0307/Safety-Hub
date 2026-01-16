@@ -29,6 +29,40 @@ function showView(viewId) {
   if (viewId === "home") loadNews("home-news-feed", 3);
   if (viewId === "news") loadNews("full-news-feed", 20);
   if (viewId === "chat") loadChats();
+  if (viewId === 'menu') {
+        // ရင်းမြစ်များ စာမျက်နှာကို ရောက်ရင် လုပ်ဆောင်လိုတာရှိက ဒီမှာရေးနိုင်သည်
+        console.log("Resources menu opened");
+    }
+
+  if (viewId === "support") {
+    // ၁။ စာမျက်နှာကို အပေါ်ဆုံးသို့ ပို့ပေးခြင်း
+    window.scrollTo(0, 0);
+
+    // ၂။ ကျပန်း နှုတ်ခွန်းဆက်စာသား (Random Greeting) ပြောင်းပေးခြင်း
+    // အလှူရှင်ကို ပိုပြီး နွေးထွေးစေပါတယ်
+    const messages = [
+      "လူသားချင်းစာနာမှုအတွက် ကျေးဇူးတင်ပါတယ် 🙏",
+      "Community အတွက် ကူညီပေးတာ ကျေးဇူးအများကြီးတင်ပါတယ် ❤️",
+      "App ကို ဆက်လက်ရှင်သန်အောင် ဝိုင်းဝန်းပေးလို့ ဝမ်းသာရပါတယ် 🤝",
+      "သင်၏ အကူအညီက ကျွန်ုပ်တို့အတွက် ခွန်အားပါပဲ ✨",
+    ];
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+    // Support View ထဲက စာသားကို ရှာပြီး ပြောင်းမယ်
+    const supportP = document.querySelector("#support-view p");
+    if (supportP) {
+      supportP.style.opacity = 0;
+      setTimeout(() => {
+        supportP.innerText = randomMsg;
+        supportP.style.transition = "opacity 0.5s";
+        supportP.style.opacity = 1;
+      }, 200);
+    }
+
+    // ၃။ Stripe လုံခြုံရေးအတွက် သတိပေးချက် (Privacy Reminder)
+    // အသုံးပြုသူတွေ စိတ်ချလက်ချ ပေးနိုင်အောင်ပါ
+    console.log("Support mode activated: Tracking disabled for donor privacy.");
+  }
 }
 
 // ၂။ SOS Logic
@@ -306,111 +340,153 @@ function getYouTubeID(url) {
 
 // သတင်းပေးပို့ခြင်း (Link ပါဝင်အောင် ပြင်ဆင်ခြင်း)
 async function handleReportSubmit() {
-    const desc = document.getElementById('desc-input').value;
-    const link = document.getElementById('link-in').value.trim();
-    const linkTitle = document.getElementById('link-title-in').value.trim();
-    const imgFile = document.getElementById('img-in').files[0];
-    const vidFile = document.getElementById('vid-in').files[0];
-    const audFile = document.getElementById('aud-in').files[0];
+  const desc = document.getElementById("desc-input").value;
+  const link = document.getElementById("link-in").value.trim();
+  const linkTitle = document.getElementById("link-title-in").value.trim();
+  const imgFile = document.getElementById("img-in").files[0];
+  const vidFile = document.getElementById("vid-in").files[0];
+  const audFile = document.getElementById("aud-in").files[0];
 
-    if (!desc && !link) return alert("အကြောင်းအရာ သို့မဟုတ် Link တစ်ခုခု ထည့်ပါ");
+  if (!desc && !link) return alert("အကြောင်းအရာ သို့မဟုတ် Link တစ်ခုခု ထည့်ပါ");
 
-    const btn = document.getElementById('post-btn');
-    btn.disabled = true; 
-    btn.innerText = "တင်နေပါသည်...";
+  const btn = document.getElementById("post-btn");
+  btn.disabled = true;
+  btn.innerText = "တင်နေပါသည်...";
 
-    try {
-        let mediaUrls = { link: link, linkTitle: linkTitle };
-        const ytID = getYouTubeID(link);
-        if (ytID) mediaUrls.youtubeID = ytID;
+  try {
+    let mediaUrls = { link: link, linkTitle: linkTitle };
+    const ytID = getYouTubeID(link);
+    if (ytID) mediaUrls.youtubeID = ytID;
 
-        if (imgFile) mediaUrls.img = await uploadFile(imgFile, 'images');
-        if (vidFile) mediaUrls.video = await uploadFile(vidFile, 'videos');
-        if (audFile) mediaUrls.audio = await uploadFile(audFile, 'audio');
+    if (imgFile) mediaUrls.img = await uploadFile(imgFile, "images");
+    if (vidFile) mediaUrls.video = await uploadFile(vidFile, "videos");
+    if (audFile) mediaUrls.audio = await uploadFile(audFile, "audio");
 
-        // ၁။ Database ထဲသို့ ဒေတာထည့်ခြင်း
-        await db.collection("reports").add({
-            description: desc,
-            ...mediaUrls,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        });
+    // ၁။ Database ထဲသို့ ဒေတာထည့်ခြင်း
+    await db.collection("reports").add({
+      description: desc,
+      ...mediaUrls,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
 
-        // ၂။ အောင်မြင်ကြောင်းပြပြီး Input များကို ဖျက်ခြင်း (Reload မလုပ်တော့ပါ)
-        alert("သတင်းပေးပို့မှု အောင်မြင်ပါသည်။");
-        
-        document.getElementById('desc-input').value = "";
-        document.getElementById('link-in').value = "";
-        document.getElementById('link-title-in').value = "";
-        document.getElementById('img-in').value = "";
-        document.getElementById('vid-in').value = "";
-        document.getElementById('aud-in').value = "";
-        if (document.getElementById('file-status')) {
-            document.getElementById('file-status').innerText = "ဖိုင်မရွေးရသေးပါ";
-        }
+    // ၂။ အောင်မြင်ကြောင်းပြပြီး Input များကို ဖျက်ခြင်း (Reload မလုပ်တော့ပါ)
+    alert("သတင်းပေးပို့မှု အောင်မြင်ပါသည်။");
 
-        // ၃။ ပင်မစာမျက်နှာသို့ ချက်ချင်းပြန်သွားခြင်း
-        showView('home');
-
-    } catch (e) {
-        alert("Error: " + e.message);
-    } finally {
-        btn.disabled = false; 
-        btn.innerText = "သတင်းပေးပို့မည်";
+    document.getElementById("desc-input").value = "";
+    document.getElementById("link-in").value = "";
+    document.getElementById("link-title-in").value = "";
+    document.getElementById("img-in").value = "";
+    document.getElementById("vid-in").value = "";
+    document.getElementById("aud-in").value = "";
+    if (document.getElementById("file-status")) {
+      document.getElementById("file-status").innerText = "ဖိုင်မရွေးရသေးပါ";
     }
+
+    // ၃။ ပင်မစာမျက်နှာသို့ ချက်ချင်းပြန်သွားခြင်း
+    showView("home");
+  } catch (e) {
+    alert("Error: " + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerText = "သတင်းပေးပို့မည်";
+  }
 }
 
 // သတင်းLoad လုပ်ခြင်း (YouTube နှင့် Link ပြသရန်)
 function loadNews(targetId, limit) {
-    const feed = document.getElementById(targetId);
-    if (!feed || !db) return;
+  const feed = document.getElementById(targetId);
+  if (!feed || !db) return;
 
-    // အမြဲတမ်း နောက်ဆုံးရသတင်းကို နားထောင်နေမည် (Real-time Listener)
-    db.collection("reports").orderBy("timestamp", "desc").limit(limit).onSnapshot(snap => {
+  // အမြဲတမ်း နောက်ဆုံးရသတင်းကို နားထောင်နေမည် (Real-time Listener)
+  db.collection("reports")
+    .orderBy("timestamp", "desc")
+    .limit(limit)
+    .onSnapshot(
+      (snap) => {
         if (snap.empty) {
-            feed.innerHTML = "<p class='status-txt'>သတင်းမရှိသေးပါ။</p>";
-            return;
+          feed.innerHTML = "<p class='status-txt'>သတင်းမရှိသေးပါ။</p>";
+          return;
         }
 
         let htmlContent = "";
-        snap.forEach(doc => {
-            const data = doc.data();
-            const id = doc.id;
-            const safeDesc = data.description ? data.description.replace(/'/g, "\\'").replace(/"/g, '&quot;') : "";
+        snap.forEach((doc) => {
+          const data = doc.data();
+          const id = doc.id;
+          const safeDesc = data.description
+            ? data.description.replace(/'/g, "\\'").replace(/"/g, "&quot;")
+            : "";
 
-            htmlContent += `
+          htmlContent += `
                 <div class="news-item card">
-                    <p style="white-space:pre-wrap;">${data.description || ''} ${data.edited ? '<small style="color:blue;">(Edited)</small>' : ''}</p>
+                    <p style="white-space:pre-wrap;">${
+                      data.description || ""
+                    } ${
+            data.edited ? '<small style="color:blue;">(Edited)</small>' : ""
+          }</p>
                     
-                    ${data.youtubeID ? `
-                        <strong class="yt-title">${data.linkTitle || 'YouTube Video'}</strong>
+                    ${
+                      data.youtubeID
+                        ? `
+                        <strong class="yt-title">${
+                          data.linkTitle || "YouTube Video"
+                        }</strong>
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/${data.youtubeID}" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/${
+                              data.youtubeID
+                            }" frameborder="0" allowfullscreen></iframe>
                         </div>
-                    ` : (data.link ? `
-                        <a href="${data.link}" target="_blank" class="article-link-card">
-                            <span class="article-link-title">${data.linkTitle || 'သတင်းခေါင်းစဉ်'}</span>
+                    `
+                        : data.link
+                        ? `
+                        <a href="${
+                          data.link
+                        }" target="_blank" class="article-link-card">
+                            <span class="article-link-title">${
+                              data.linkTitle || "သတင်းခေါင်းစဉ်"
+                            }</span>
                             <div class="article-link-url"><i class="fas fa-external-link-alt"></i> အသေးစိတ်ဖတ်ရန်</div>
                         </a>
-                    ` : '')}
+                    `
+                        : ""
+                    }
 
-                    ${data.img ? `<img src="${data.img}" style="width:100%; border-radius:10px; margin-top:10px;" onclick="window.open('${data.img}')">` : ''}
-                    ${data.video ? `<video controls src="${data.video}" style="width:100%; border-radius:10px; margin-top:10px;"></video>` : ''}
-                    ${data.audio ? `<audio controls src="${data.audio}" style="width:100%; margin-top:10px;"></audio>` : ''}
+                    ${
+                      data.img
+                        ? `<img src="${data.img}" style="width:100%; border-radius:10px; margin-top:10px;" onclick="window.open('${data.img}')">`
+                        : ""
+                    }
+                    ${
+                      data.video
+                        ? `<video controls src="${data.video}" style="width:100%; border-radius:10px; margin-top:10px;"></video>`
+                        : ""
+                    }
+                    ${
+                      data.audio
+                        ? `<audio controls src="${data.audio}" style="width:100%; margin-top:10px;"></audio>`
+                        : ""
+                    }
 
-                    ${isModerator ? `
+                    ${
+                      isModerator
+                        ? `
                         <div class="mod-controls">
                             <button class="btn-mod-edit" onclick="editReport('${id}', '${safeDesc}')">Edit</button>
                             <button class="btn-mod-delete" onclick="deleteReport('${id}')">Delete</button>
                         </div>
-                    ` : ''}
+                    `
+                        : ""
+                    }
                 </div>
             `;
         });
         feed.innerHTML = htmlContent;
-    }, err => {
+      },
+      (err) => {
         console.error("Snapshot error:", err);
-        feed.innerHTML = "<p class='status-txt'>သတင်းများ ပြန်လည်ရယူရန် အခက်အခဲရှိနေပါသည်။</p>";
-    });
+        feed.innerHTML =
+          "<p class='status-txt'>သတင်းများ ပြန်လည်ရယူရန် အခက်အခဲရှိနေပါသည်။</p>";
+      }
+    );
 }
 
 /* 

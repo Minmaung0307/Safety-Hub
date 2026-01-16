@@ -1,125 +1,231 @@
 <!DOCTYPE html>
 <html lang="my">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Safety Hub - အားလုံးအတွက် လုံခြုံရေး</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="shortcut icon" href="assets/favicon.ico">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-
-    <!-- Header -->
-    <header id="app-header">
-        <div class="header-content">
-            <h1>SAFETY HUB</h1>
-            <p>သင်နှင့်အတူ ကျွန်ုပ်တို့ရှိသည်</p>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>လုံခြုံဘေးကင်းရေး App</title>
+    <!-- CSS & Fonts -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- App Header -->
+    <header class="main-header">
+      <div class="logo">SAFETY HUB</div>
+      <p>သင်နှင့်အတူ ကျွန်ုပ်တို့ရှိသည်</p>
     </header>
 
-    <!-- Main Content Area -->
-    <main id="main-content">
-        
-        <!-- View: Home -->
-        <section id="home-view" class="view active">
-            <div class="sos-container">
-                <button id="sos-btn" class="sos-button">
-                    <i class="fas fa-shield-alt"></i>
-                </button>
-                <h2>အရေးပေါ် SOS</h2>
-                <p>ခလုတ်ကို ၃ စက္ကန့် ဖိနှိပ်ထားပါ</p>
-            </div>
-
-            <div class="menu-grid">
-                <div class="menu-item" onclick="showView('rights')">
-                    <i class="fas fa-gavel"></i>
-                    <span>အခွင့်အရေး</span>
-                </div>
-                <div class="menu-item" onclick="showView('legal')">
-                    <i class="fas fa-user-tie"></i>
-                    <span>ရှေ့နေများ</span>
-                </div>
-                <div class="menu-item" onclick="showView('prep')">
-                    <i class="fas fa-briefcase"></i>
-                    <span>ပြင်ဆင်ရန်</span>
-                </div>
-                <div class="menu-item" onclick="showView('news')">
-                    <i class="fas fa-newspaper"></i>
-                    <span>သတင်းများ</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- View: Know Your Rights -->
-        <section id="rights-view" class="view">
-            <button class="back-btn" onclick="showView('home')"><i class="fas fa-arrow-left"></i> နောက်သို့</button>
-            <h2>သင့်အခွင့်အရေးများ</h2>
-            <div class="content-card">
-                <h3>၁။ တံခါးမဖွင့်ပါနှင့်</h3>
-                <p>ဝရမ်းမပါဘဲ ICE ကို အိမ်ထဲ ပေးမဝင်ပါနှင့်။ ဝရမ်းကို တံခါးအောက်ကနေ ထိုးသွင်းခိုင်းပါ။</p>
-                <h3>၂။ စကားမပြောပါနှင့်</h3>
-                <p>"I exercise my right to remain silent" ဟု ပြောပါ။</p>
-                <h3>၃။ လက်မှတ်မထိုးပါနှင့်</h3>
-                <p>ရှေ့နေနှင့် မတိုင်ပင်ဘဲ မည်သည့်စာရွက်ကိုမှ လက်မှတ်မထိုးပါနှင့်။</p>
-            </div>
-        </section>
-
-        <!-- View: Legal Directory -->
-        <section id="legal-view" class="view">
-            <button class="back-btn" onclick="showView('home')"><i class="fas fa-arrow-left"></i> နောက်သို့</button>
-            <h2>အရေးပေါ် ရှေ့နေများ</h2>
-            <div class="contact-card">
-                <div class="info">
-                    <strong>ACLU (National)</strong>
-                    <p>အရေးပေါ် ဖုန်းခေါ်ဆိုရန်</p>
-                </div>
-                <a href="tel:12125492500" class="call-btn"><i class="fas fa-phone"></i></a>
-            </div>
-            <div class="contact-card">
-                <div class="info">
-                    <strong>Immigrant Defense Project</strong>
-                    <p>ဥပဒေအကြံဉာဏ်ရယူရန်</p>
-                </div>
-                <a href="tel:12127256422" class="call-btn"><i class="fas fa-phone"></i></a>
-            </div>
-        </section>
-
-        <!-- View: Prep -->
-        <section id="prep-view" class="view">
-            <button class="back-btn" onclick="showView('home')"><i class="fas fa-arrow-left"></i> နောက်သို့</button>
-            <h2>ကြိုတင်ပြင်ဆင်ရန်</h2>
-            <ul class="checklist">
-                <li><input type="checkbox"> မိသားစုဖုန်းနံပါတ် အလွတ်ကျက်ထားပါ</li>
-                <li><input type="checkbox"> အရေးကြီးဆေးဝါးများ စုဆောင်းထားပါ</li>
-                <li><input type="checkbox"> A-Number ကို သိမ်းထားပါ</li>
-            </ul>
-        </section>
-
-    </main>
-
-    <!-- Navigation Bar -->
-    <nav id="bottom-nav">
-        <div class="nav-item active" onclick="showView('home')">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
+    <!-- Main Container -->
+    <div id="app-container">
+      <!-- View 1: Home -->
+      <section id="home-view" class="view active">
+        <div class="sos-wrapper">
+          <button id="sos-btn" class="sos-circle">SOS</button>
+          <p>အရေးပေါ်အတွက် ၃ စက္ကန့် ဖိထားပါ</p>
+          <div id="sos-action" class="hidden">
+            <a href="tel:12127256422" class="emergency-call"
+              >ရှေ့နေထံ တိုက်ရိုက်ခေါ်မည်</a
+            >
+          </div>
         </div>
-        <div class="nav-item" onclick="showView('rights')">
-            <i class="fas fa-book"></i>
-            <span>Rights</span>
+
+        <div class="card-section">
+          <h4 class="title-bar">နောက်ဆုံးရ သတင်း (Update)</h4>
+          <div id="home-news-feed" class="news-list">သတင်းများ ရယူနေသည်...</div>
+          <button class="btn-outline" onclick="showView('news')">
+            သတင်းအားလုံးကြည့်ရန်
+          </button>
         </div>
-        <div class="nav-item" onclick="showView('legal')">
-            <i class="fas fa-phone-alt"></i>
-            <span>Legal</span>
+
+        <div class="quick-menu">
+          <div class="menu-box" onclick="showView('rights')">
+            <i class="fas fa-gavel"></i><span>အခွင့်အရေး</span>
+          </div>
+          <div class="menu-box" onclick="showView('legal')">
+            <i class="fas fa-user-shield"></i><span>ရှေ့နေများ</span>
+          </div>
+          <div class="menu-box" onclick="showView('prep')">
+            <i class="fas fa-suitcase"></i><span>ကြိုတင်ပြင်ဆင်</span>
+          </div>
+          <div class="menu-box" onclick="showView('report')">
+            <i class="fas fa-camera"></i><span>သတင်းပို့ရန်</span>
+          </div>
+          <div class="menu-box" onclick="showView('settings')">
+            <i class="fas fa-cog"></i><span>အချက်အလက်များ</span>
+          </div>
         </div>
+      </section>
+
+      <!-- View 2: News Feed -->
+      <section id="news-view" class="view">
+        <div class="view-header">
+          <button onclick="showView('home')" class="back-btn">
+            <i class="fas fa-arrow-left"></i> နောက်သို့
+          </button>
+          <h2>သတင်းနှင့် အခြေအနေများ</h2>
+        </div>
+        <div id="full-news-feed"></div>
+      </section>
+
+      <!-- View 3: Report Form -->
+      <section id="report-view" class="view">
+        <div class="view-header">
+          <button onclick="showView('home')" class="back-btn">
+            <i class="fas fa-arrow-left"></i> နောက်သို့
+          </button>
+          <h2>သတင်းပေးပို့ရန်</h2>
+        </div>
+        <div class="report-form card">
+          <textarea
+            id="desc-input"
+            placeholder="ဘယ်နေရာမှာ ဘာဖြစ်နေလဲ ရေးပေးပါ..."
+          ></textarea>
+          <div class="media-pickers">
+            <label
+              ><i class="fas fa-image"></i
+              ><input type="file" id="img-in" accept="image/*" hidden
+            /></label>
+            <label
+              ><i class="fas fa-video"></i
+              ><input type="file" id="vid-in" accept="video/*" hidden
+            /></label>
+            <label
+              ><i class="fas fa-microphone"></i
+              ><input type="file" id="aud-in" accept="audio/*" hidden
+            /></label>
+          </div>
+          <div id="file-status" class="status-txt">ဖိုင်မရွေးရသေးပါ</div>
+          <button
+            id="post-btn"
+            onclick="handleReportSubmit()"
+            class="btn-primary"
+          >
+            သတင်းပေးပို့မည်
+          </button>
+        </div>
+      </section>
+
+      <!-- View 4: Rights -->
+      <section id="rights-view" class="view">
+        <div class="view-header">
+          <button onclick="showView('home')" class="back-btn">←</button>
+          <h2>အခွင့်အရေး (Rights)</h2>
+        </div>
+        <div class="card content">
+          <h3>၁။ တံခါးမဖွင့်ပါနှင့်</h3>
+          <p>
+            တရားသူကြီးလက်မှတ်ပါသော ဝရမ်းမပါဘဲ ICE ကို အိမ်ထဲ ပေးမဝင်ပါနှင့်။
+          </p>
+          <h3>၂။ စကားမပြောပါနှင့်</h3>
+          <p>"I exercise my right to remain silent" ဟုသာ ပြောပါ။</p>
+        </div>
+      </section>
+
+      <!-- View 5: Legal -->
+      <section id="legal-view" class="view">
+        <div class="view-header">
+          <button onclick="showView('home')" class="back-btn">←</button>
+          <h2>ရှေ့နေများ</h2>
+        </div>
+        <div class="card contact">
+          <strong>ACLU Hotline:</strong><br /><a
+            href="tel:2125492500"
+            class="tel-link"
+            >212-549-2500</a
+          >
+          <hr />
+          <strong>Immigrant Defense Project:</strong><br /><a
+            href="tel:2127256422"
+            class="tel-link"
+            >212-725-6422</a
+          >
+        </div>
+      </section>
+
+      <!-- View 6: Preparation -->
+      <section id="prep-view" class="view">
+        <div class="view-header">
+          <button onclick="showView('home')" class="back-btn">←</button>
+          <h2>ပြင်ဆင်ရန်</h2>
+        </div>
+        <div class="card content">
+          <p>• မိသားစုဖုန်းနံပါတ် အလွတ်ကျက်ထားပါ။</p>
+          <p>• အရေးကြီးစာရွက်စာတမ်း မိတ္တူထားပါ။</p>
+          <p>• ကလေးများအတွက် အုပ်ထိန်းသူ စီစဉ်ထားပါ။</p>
+        </div>
+      </section>
+
+      <!-- View: Settings (ကိုယ်ရေးအချက်အလက် ပြင်ဆင်ရန်) -->
+      <section id="settings-view" class="view">
+        <button class="back-btn" onclick="showView('home')">← ရှေ့သို့</button>
+        <h2 class="section-title">အရေးပေါ် ဆက်သွယ်ရန်များ</h2>
+
+        <div class="card">
+          <div class="form-group">
+            <label>မိသားစု ဖုန်းနံပါတ် (၁)</label>
+            <input
+              type="tel"
+              id="family-phone-1"
+              class="large-input"
+              placeholder="09xxxxxxx"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>မိသားစု ဖုန်းနံပါတ် (၂)</label>
+            <input
+              type="tel"
+              id="family-phone-2"
+              class="large-input"
+              placeholder="09xxxxxxx"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>ကိုယ်ပိုင်ရှေ့နေ ဖုန်းနံပါတ်</label>
+            <input
+              type="tel"
+              id="lawyer-phone"
+              class="large-input"
+              placeholder="09xxxxxxx"
+            />
+          </div>
+
+          <button
+            onclick="saveSettings()"
+            class="btn-primary"
+            style="margin-top: 10px"
+          >
+            အချက်အလက်များ သိမ်းဆည်းမည်
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <div class="nav-btn active" onclick="showView('home')">
+        <i class="fas fa-home"></i><span>ပင်မ</span>
+      </div>
+      <div class="nav-btn" onclick="showView('news')">
+        <i class="fas fa-newspaper"></i><span>သတင်း</span>
+      </div>
+      <div class="nav-btn" onclick="showView('report')">
+        <i class="fas fa-plus-circle"></i><span>သတင်းပို့</span>
+      </div>
     </nav>
 
-    <!-- Firebase Scripts -->
+    <!-- Scripts -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>

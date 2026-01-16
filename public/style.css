@@ -177,3 +177,168 @@ textarea {
     max-width: 400px;
     text-align: center;
 }
+/* Warning Box */
+.warning-box {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    color: #92400e;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.warning-box i { font-size: 18px; margin-bottom: 5px; display: block; }
+
+/* Legal Items */
+.legal-item { padding: 10px 0; }
+.legal-item p { font-size: 13px; color: var(--text-muted); margin: 5px 0 10px 0; }
+.call-link-btn { 
+    display: inline-block; background: var(--main); color: white; 
+    padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;
+}
+.web-link-btn {
+    display: inline-block; background: #64748b; color: white; 
+    padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;
+}
+
+/* ACLU Grid */
+.aclu-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 15px; }
+.aclu-card { 
+    background: white; padding: 15px; border-radius: 12px; 
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+.aclu-card span { font-weight: 600; font-size: 14px; color: var(--text-main); }
+.aclu-card a { color: var(--main); text-decoration: none; font-weight: bold; border: 1px solid var(--main); padding: 5px 10px; border-radius: 8px; font-size: 13px; }
+
+.sub-title { font-size: 16px; font-weight: 700; color: var(--main); margin: 20px 0 5px 0; text-align: center; }
+
+/* Rights Detail View */
+.rights-detail {
+    text-align: left;
+    border-top: 5px solid var(--main);
+}
+.rights-header {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--main);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.rights-detail h4 {
+    font-size: 15px;
+    color: var(--danger);
+    margin: 10px 0;
+    line-height: 1.4;
+}
+.rights-detail ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+.rights-detail li {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.pro-tip {
+    background: #e0f2fe;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #0369a1;
+    font-style: italic;
+}
+
+/* Document Table */
+.doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.doc-table th, .doc-table td {
+    border: 1px solid #eee;
+    padding: 10px;
+    font-size: 13px;
+    text-align: left;
+}
+.doc-table th { background: #f8fafc; color: var(--main); }
+.warning-txt {
+    color: var(--danger);
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px dashed var(--danger);
+    border-radius: 10px;
+}
+
+/* Prep Card & Checklist */
+.prep-card {
+    text-align: left;
+    border-bottom: 4px solid #e2e8f0;
+}
+.prep-header {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--main);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.check-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.check-group label {
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    color: #475569;
+}
+.check-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--main);
+}
+.prep-card .status-txt {
+    font-size: 13px;
+    color: #64748b;
+    font-style: italic;
+    margin-bottom: 15px;
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.guide-step {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    border-left: 5px solid var(--main);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.step-body {
+    text-align: left;
+}
+.step-body h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: var(--main);
+}
+.step-body p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4b5563;
+}

@@ -150,15 +150,117 @@
       <section id="rights-view" class="view">
         <div class="view-header">
           <button onclick="showView('home')" class="back-btn">←</button>
-          <h2>အခွင့်အရေး (Rights)</h2>
+          <h2 class="section-title">သင့်အခွင့်အရေးများ (Rights)ကို သိရှိပါ</h2>
         </div>
-        <div class="card content">
-          <h3>၁။ တံခါးမဖွင့်ပါနှင့်</h3>
+
+        <!-- ၁။ အိမ်သို့ လာရောက်ခြင်းနှင့် ဝရမ်းစစ်ဆေးပုံ -->
+        <div class="card rights-detail">
+          <div class="rights-header">
+            <i class="fas fa-home"></i> အိမ်သို့ လာရောက်လျှင်
+          </div>
+          <h4>
+            တရားသူကြီးလက်မှတ်ပါသော ဝရမ်း (Judicial Warrant) ပါမှသာ တံခါးဖွင့်ပါ။
+          </h4>
           <p>
-            တရားသူကြီးလက်မှတ်ပါသော ဝရမ်းမပါဘဲ ICE ကို အိမ်ထဲ ပေးမဝင်ပါနှင့်။
+            <strong>စစ်ဆေးရန်:</strong> ဝရမ်းစာကို တံခါးအောက်ခြေမှ
+            ထိုးသွင်းခိုင်းပါ။ ဝရမ်းတွင် အောက်ပါတို့ ပါဝင်ရမည် -
           </p>
-          <h3>၂။ စကားမပြောပါနှင့်</h3>
+          <ul>
+            <li>သင့်အမည်နှင့် လိပ်စာ မှန်ကန်ရမည်။</li>
+            <li>တရားသူကြီး (Judge/Court) ၏ လက်မှတ် ပါရှိရမည်။</li>
+            <li>
+              <strong>သတိပြုရန်:</strong> ICE က ထုတ်သော (Administrative Warrant)
+              သည် သင့်အိမ်ထဲသို့ ဝင်ရန် တရားမဝင်ပါ။ တရားသူကြီးလက်မှတ် ပါမှသာ
+              ဝင်ခွင့်ရှိသည်။
+            </li>
+          </ul>
+          <p class="pro-tip">
+            ဝရမ်းစာ မှန်ကန်နေသဖြင့် ၎င်းတို့ အိမ်ထဲဝင်လာလျှင်ပင် သင်သည်
+            ဘာမှမပြောဘဲ နေပိုင်ခွင့် (Silent) ရှိနေဆဲဖြစ်သည်။
+          </p>
           <p>"I exercise my right to remain silent" ဟုသာ ပြောပါ။</p>
+        </div>
+
+        <!-- ၂။ အများပြည်သူဆိုင်ရာနေရာများ (Restaurant, Grocery, Gas Station) -->
+        <div class="card rights-detail">
+          <div class="rights-header">
+            <i class="fas fa-store"></i> အများပြည်သူဆိုင်ရာနေရာများ
+          </div>
+          <p>
+            စားသောက်ဆိုင်၊ ဈေးဆိုင် သို့မဟုတ် လမ်းပေါ်တွင် ICE နှင့် တွေ့လျှင် -
+          </p>
+          <ul>
+            <li>
+              <strong>မထွက်ပြေးပါနှင့်:</strong> ထွက်ပြေးခြင်းသည် ၎င်းတို့ကို
+              ဖမ်းဆီးရန် အကြောင်းပြချက် ပေးလိုက်ခြင်း ဖြစ်သည်။
+            </li>
+            <li>
+              <strong>မေးမြန်းပါ:</strong> "Am I free to go?" (ကျွန်တော်/မ
+              သွားလို့ရပြီလား?) ဟု အေးအေးဆေးဆေး မေးပါ။ ၎င်းတို့က "Yes" ဟု ဆိုပါက
+              ထိုနေရာမှ ဖြည်းဖြည်းချင်း ထွက်ခွာသွားပါ။
+            </li>
+            <li>
+              <strong>ငြင်းပယ်ခွင့်:</strong> သင့်ကို ရှာဖွေစစ်ဆေးရန်
+              ကြိုးစားပါက "I do not consent to a search" (ကျွန်တော့်ကို
+              ရှာဖွေတာကို ခွင့်မပြုပါ) ဟု ပြောပါ။
+            </li>
+          </ul>
+        </div>
+
+        <!-- ၃။ ကားထဲတွင် ရှိနေစဉ် (In your Car) -->
+        <div class="card rights-detail">
+          <div class="rights-header">
+            <i class="fas fa-car"></i> ကားထဲတွင် ရှိနေစဉ်
+          </div>
+          <ul>
+            <li>
+              ကားကို အန္တရာယ်ကင်းစွာ ရပ်ပါ။ လက်နှစ်ဖက်ကို စတီယာရင်ပေါ်တွင်
+              တင်ထားပါ။
+            </li>
+            <li>
+              <strong>ရှာဖွေခြင်း:</strong> ဝရမ်းမပါဘဲ သင့်ကားကို ရှာဖွေရန်
+              ကြိုးစားပါက "I do not consent to a search of my vehicle" ဟု
+              ပြောပါ။
+            </li>
+            <li>
+              <strong>ခရီးသည်များ:</strong> ကားထဲတွင် ပါလာသူအားလုံးသည်
+              စကားမပြောဘဲ နေပိုင်ခွင့် ရှိသည်။ ၎င်းတို့က မေးမြန်းလျှင်လည်း "I am
+              exercising my right to remain silent" ဟု ပြောနိုင်ပါသည်။
+            </li>
+          </ul>
+        </div>
+
+        <!-- ၄။ စာရွက်စာတမ်းများနှင့် ပတ်သက်၍ -->
+        <div class="card rights-detail">
+          <div class="rights-header">
+            <i class="fas fa-file-alt"></i> စာရွက်စာတမ်းများ ပြသခြင်း
+          </div>
+          <table class="doc-table">
+            <tr>
+              <th>စာရွက်စာတမ်း</th>
+              <th>မူရင်း/မိတ္တူ</th>
+            </tr>
+            <tr>
+              <td>Green Card / Work Permit</td>
+              <td><strong>မူရင်း</strong> (ဥပဒေအရ အမြဲဆောင်ထားရမည်)</td>
+            </tr>
+            <tr>
+              <td>နိုင်ငံကူးလက်မှတ် (Passport)</td>
+              <td>
+                <strong>မိတ္တူ</strong> သို့မဟုတ် ဖုန်းထဲတွင် ဓာတ်ပုံထားပါ
+                (မူရင်း ပျောက်ဆုံးမည်ကို ကာကွယ်ရန်)
+              </td>
+            </tr>
+            <tr>
+              <td>လိပ်စာအထောက်အထား (ID)</td>
+              <td><strong>မူရင်း</strong> ဆောင်ထားပါ</td>
+            </tr>
+          </table>
+          <p class="warning-txt">
+            <strong>အရေးကြီးဆုံး:</strong> မည်သည့်အခါမျှ စာရွက်စာတမ်းအတု (Fake
+            Docs) မပြပါနှင့်။ ၎င်းသည် ပြည်နှင်ဒဏ်ကို ပိုမိုမြန်ဆန်စေပါသည်။
+            ဘာမှမရှိပါက ဘာမှမပြဘဲ နေခြင်းက ပို၍ ဘေးကင်းပါသည်။
+          </p>
         </div>
       </section>
 
@@ -166,33 +268,255 @@
       <section id="legal-view" class="view">
         <div class="view-header">
           <button onclick="showView('home')" class="back-btn">←</button>
-          <h2>ရှေ့နေများ</h2>
+          <h2 class="section-title">ဥပဒေရေးရာ အကူအညီများ</h2>
         </div>
-        <div class="card contact">
-          <strong>ACLU Hotline:</strong><br /><a
-            href="tel:2125492500"
-            class="tel-link"
-            >212-549-2500</a
-          >
+
+        <!-- အရေးကြီး သတိပေးချက် -->
+        <div class="warning-box">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>အရေးကြီး သတိပေးချက်</strong>
+          <p>
+            ဤဖုန်းနံပါတ်များသည် ဥပဒေရေးရာ အကူအညီပေးသည့် အဖွဲ့အစည်းများဖြစ်ပြီး
+            ၉၁၁ (911) ကဲ့သို့ ၂၄ နာရီ ချက်ချင်းတုံ့ပြန်သည့် အရေးပေါ် ဝန်ဆောင်မှု
+            မဟုတ်နိုင်ပါ။ ထို့ကြောင့် ရုံးဖွင့်ချိန်အတွင်းသာ
+            ဆက်သွယ်၍ရနိုင်သည်ကို သတိပြုပါ။
+          </p>
+        </div>
+
+        <!-- အဓိက အဖွဲ့အစည်းများ -->
+        <div class="card">
+          <h4 style="margin: 0 0 10px 0; color: var(--main)">
+            အဓိက အကူအညီပေးရေးအဖွဲ့များ
+          </h4>
+          <div class="legal-item">
+            <strong>Immigrant Defense Project (IDP)</strong>
+            <p>ICE ဖမ်းဆီးမှုနှင့် ပြည်နှင်ဒဏ်ဆိုင်ရာ ဥပဒေအကြံဉာဏ်။</p>
+            <a href="tel:2127256422" class="call-link-btn"
+              ><i class="fas fa-phone"></i> 212-725-6422</a
+            >
+            <small
+              >*အင်္ဂါနှင့် ကြာသပတေး (မွန်းလွဲပိုင်း) ဆက်သွယ်ရန်
+              ပိုကောင်းပါသည်။</small
+            >
+          </div>
           <hr />
-          <strong>Immigrant Defense Project:</strong><br /><a
-            href="tel:2127256422"
-            class="tel-link"
-            >212-725-6422</a
-          >
+          <div class="legal-item">
+            <strong>Informed Immigrant</strong>
+            <p>မိမိအနီးအနားရှိ အခမဲ့/သက်သာသော ရှေ့နေများရှာရန်။</p>
+            <a
+              href="https://www.informedimmigrant.com"
+              target="_blank"
+              class="web-link-btn"
+              ><i class="fas fa-external-link-alt"></i> Website သို့သွားရန်</a
+            >
+          </div>
+        </div>
+
+        <!-- ပြည်နယ်အလိုက် ACLU Hotline များ -->
+        <h3 class="sub-title">ACLU ပြည်နယ်ရုံးခွဲများ</h3>
+        <p>
+          American Civil Liberties Union (အမေရိကန် ပြည်သူ့အခွင့်အရေးဆိုင်ရာ
+          သမဂ္ဂ)
+        </p>
+        <p class="status-txt" style="text-align: center">
+          ရုံးဖွင့်ချိန်: တနင်္လာ - သောကြာ (9 AM - 5 PM)
+        </p>
+        <p>
+          ACLU ဟာ အမေရိကန်ဖွဲ့စည်းပုံအခြေခံဥပဒေက ပေးထားတဲ့ လူသားတိုင်းရဲ့
+          အခြေခံအခွင့်အရေးတွေကို ကာကွယ်စောင့်ရှောက်ပေးတဲ့ အကျိုးအမြတ်မယူတဲ့
+          အဖွဲ့အစည်းကြီး ဖြစ်ပါတယ်။ သူတို့က အမေရိကန်နိုင်ငံသားဖြစ်စေ၊ မဟုတ်စေ
+          (ရွှေ့ပြောင်းနေထိုင်သူများအပါအဝင်) အမေရိကန်မြေပေါ်မှာ ရှိနေသူတိုင်းရဲ့
+          အခွင့်အရေး ချိုးဖောက်ခံရရင် ရှေ့နေစရိတ် အခမဲ့ (သို့မဟုတ်)
+          သက်သာသောနှုန်းထားနဲ့ ကူညီတိုက်ပွဲဝင်ပေးလေ့ရှိပါတယ်။
+        </p>
+
+        <div class="aclu-grid">
+          <!-- New York -->
+          <div class="aclu-card">
+            <span>NY (National Headquarters)</span>
+            <a href="tel:2125492500">212-549-2500</a>
+          </div>
+          <div class="aclu-card">
+            <span>NY (New York)</span>
+            <a href="tel:2126073300">212-607-3300</a>
+          </div>
+          <!-- North Carolina -->
+          <div class="aclu-card">
+            <span>NC (North Carolina)</span>
+            <a href="tel:9198343466">919-834-3466</a>
+          </div>
+          <!-- South Carolina -->
+          <div class="aclu-card">
+            <span>SC (South Carolina)</span>
+            <a href="tel:8437201424">843-720-1424</a>
+          </div>
+          <!-- Virginia -->
+          <div class="aclu-card">
+            <span>VA (Virginia)</span>
+            <a href="tel:8046448022">804-644-8022</a>
+          </div>
+          <!-- Minnesota -->
+          <div class="aclu-card">
+            <span>MN (Minnesota)</span>
+            <a href="tel:6516454097">651-645-4097</a>
+          </div>
+          <!-- Georgia (Atlanta) -->
+          <div class="aclu-card">
+            <span>Atlanta (GA)</span>
+            <a href="tel:7703038111">770-303-8111</a>
+          </div>
+          <!-- Tennessee -->
+          <div class="aclu-card">
+            <span>TN (Tennessee)</span>
+            <a href="tel:6153207142">615-320-7142</a>
+          </div>
+          <!-- Kentucky -->
+          <div class="aclu-card">
+            <span>KY (Kentucky)</span>
+            <a href="tel:5025819746">502-581-9746</a>
+          </div>
+          <!-- Pennsylvania (Phil) -->
+          <div class="aclu-card">
+            <span>Phil (PA)</span>
+            <a href="tel:2155921513">215-592-1513</a>
+          </div>
         </div>
       </section>
 
-      <!-- View 6: Preparation -->
+      <!-- View: Prep (ကြိုတင်ပြင်ဆင်ရန် အပြည့်အစုံ) -->
       <section id="prep-view" class="view">
-        <div class="view-header">
-          <button onclick="showView('home')" class="back-btn">←</button>
-          <h2>ပြင်ဆင်ရန်</h2>
+        <button class="back-btn" onclick="showView('home')">← နောက်သို့</button>
+        <h2 class="section-title">ကြိုတင်ပြင်ဆင်ထားရမည့်အရာများ</h2>
+
+        <!-- ၁။ ကျန်းမာရေးနှင့် ဆေးဝါး -->
+        <div class="card prep-card">
+          <div class="prep-header">
+            <i class="fas fa-medkit"></i> ကျန်းမာရေးနှင့် ဆေးဝါး
+          </div>
+          <div class="check-group">
+            <label
+              ><input type="checkbox" /> သောက်နေကျ အရေးကြီးဆေးဝါးများ
+              (Prescriptions) စာရင်းကို အင်္ဂလိပ်လို ရေးမှတ်ထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> ရောဂါအခံရှိပါက (ဥပမာ - ဆီးချို၊
+              သွေးတိုး) ဆရာဝန်မှတ်တမ်း မိတ္တူကို အသင့်ထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> မိမိပြသနေကျ ဆရာဝန်အမည်နှင့်
+              ဖုန်းနံပါတ်ကို မှတ်ထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> အမြင်အာရုံအတွက် မျက်မှန် သို့မဟုတ်
+              Contact Lens အပို ဆောင်ထားပါ။</label
+            >
+          </div>
         </div>
-        <div class="card content">
-          <p>• မိသားစုဖုန်းနံပါတ် အလွတ်ကျက်ထားပါ။</p>
-          <p>• အရေးကြီးစာရွက်စာတမ်း မိတ္တူထားပါ။</p>
-          <p>• ကလေးများအတွက် အုပ်ထိန်းသူ စီစဉ်ထားပါ။</p>
+
+        <!-- ၂။ အရေးပေါ် အသုံးအဆောင် (Go-Bag) -->
+        <div class="card prep-card">
+          <div class="prep-header">
+            <i class="fas fa-tshirt"></i> အဝတ်အထည်နှင့် အသုံးအဆောင်
+          </div>
+          <p class="status-txt">
+            ထိန်းသိမ်းရေးစခန်းရောက်ပါက အသုံးအဆောင်အများစု
+            သိမ်းဆည်းခံရနိုင်သော်လည်း မိသားစုမှ နောက်ပိုင်းပို့ပေးနိုင်ရန်
+            အိတ်တစ်လုံးဖြင့် အသင့်ပြင်ထားပါ -
+          </p>
+          <div class="check-group">
+            <label
+              ><input type="checkbox" /> သက်တောင့်သက်သာရှိသော အဝတ်အစား (၃)
+              စုံခန့်။</label
+            >
+            <label><input type="checkbox" /> အတွင်းခံ အဝတ်အထည် အပိုများ။</label>
+            <label
+              ><input type="checkbox" /> ဆောင်းရာသီအတွက် အနွေးထည် (Jacket)
+              တစ်ထည်။</label
+            >
+            <label
+              ><input type="checkbox" /> သွားတိုက်ဆေး၊ သွားတိုက်တံ စသည့် အခြေခံ
+              တစ်ကိုယ်ရေသုံးပစ္စည်းများ။</label
+            >
+          </div>
+        </div>
+
+        <!-- ၃။ ငွေကြေးနှင့် ပိုင်ဆိုင်မှု စီမံခြင်း -->
+        <div class="card prep-card">
+          <div class="prep-header">
+            <i class="fas fa-wallet"></i> ငွေကြေးနှင့် ပိုင်ဆိုင်မှု
+          </div>
+          <div class="check-group">
+            <label
+              ><input type="checkbox" /> အရေးပေါ်သုံးရန် ငွေသား (Cash)
+              အနည်းငယ်ကို လုံခြုံသောနေရာတွင် ထားရှိပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> မိမိ၏ ဘဏ်အကောင့် သို့မဟုတ်
+              ငွေကြေးကိစ္စများကို မိသားစုဝင်တစ်ဦးဦးက ကိုင်တွယ်နိုင်ရန်
+              ကိုယ်စားလှယ်လွှဲစာ (Power of Attorney) ကြိုတင်လုပ်ထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> အိမ်လခ၊ ကားလခနှင့် လစဉ်ပေးဆောင်ရမည့်
+              Bill များစာရင်းကို မိသားစုထံ ပေးထားပါ။</label
+            >
+          </div>
+        </div>
+
+        <!-- ၄။ ကလေးများနှင့် မိသားစု စီစဉ်မှု -->
+        <div class="card prep-card">
+          <div class="prep-header">
+            <i class="fas fa-child"></i> ကလေးများနှင့် မိသားစု
+          </div>
+          <div class="check-group">
+            <label
+              ><input type="checkbox" /> မိသားစုဝင်များ၏ ဖုန်းနံပါတ်များကို
+              မှတ်သားထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> မိဘနှစ်ပါးလုံး ဖမ်းဆီးခံရပါက
+              ကလေးများကို မည်သူက စောင့်ရှောက်မည်ဆိုသည့် Care Plan ကို
+              စာဖြင့်ရေးသား လက်မှတ်ထိုးထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> ကလေး၏ ကျောင်းနှင့် ဆရာဝန်
+              ဖုန်းနံပါတ်များကို အုပ်ထိန်းသူထံ ပေးထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> ကလေး၏ အရေးကြီး စာရွက်စာတမ်းများ (Birth
+              Certificate/Medical records) ကို တစ်နေရာတည်း စုထားပါ။</label
+            >
+          </div>
+        </div>
+
+        <!-- ၅။ အရေးကြီး စာရွက်စာတမ်းများ -->
+        <div class="card prep-card">
+          <div class="prep-header">
+            <i class="fas fa-folder-open"></i> စာရွက်စာတမ်း မိတ္တူများ
+          </div>
+          <div class="check-group">
+            <label
+              ><input type="checkbox" /> A-Number (ရှိလျှင်) ကို
+              အလွတ်ကျက်ထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> Passport, ID, Green Card နှင့်
+              အခြားဗီဇာ စာရွက်စာတမ်းအားလုံးကို ကော်ပီ (၂) စုံစီ ကူးထားပါ။</label
+            >
+            <label
+              ><input type="checkbox" /> တစ်စုံကို ယုံကြည်ရသူထံ ပေးထားပြီး
+              ကျန်တစ်စုံကို အွန်လိုင်း (Google Drive/Cloud) ပေါ်တွင်
+              သိမ်းထားပါ။</label
+            >
+          </div>
+        </div>
+
+        <div class="warning-box" style="margin-top: 20px">
+          <p>
+            <strong>သတိပြုရန်:</strong> အဖမ်းခံရသည့်အခါ လက်ဝတ်ရတနာများ၊
+            အဖိုးတန်ပစ္စည်းများနှင့် အီလက်ထရောနစ် ပစ္စည်းအများအပြားကို
+            ဆောင်မသွားပါနှင့်။ သိမ်းဆည်းခံရခြင်း သို့မဟုတ် ပျောက်ဆုံးခြင်းများ
+            ဖြစ်နိုင်ပါသည်။
+          </p>
         </div>
       </section>
 
@@ -242,51 +566,91 @@
         </div>
       </section>
 
-      <!-- View: User Guide (လမ်းညွှန်ချက်) -->
+      <!-- View: User Guide (လမ်းညွှန်ချက် အပြည့်အစုံ) -->
       <section id="guide-view" class="view">
         <button class="back-btn" onclick="showView('home')">
           ← ပင်မစာမျက်နှာ
         </button>
         <h2 class="section-title">App အသုံးပြုပုံ လမ်းညွှန်</h2>
 
+        <!-- အဆင့် ၁: ဖုန်းနံပါတ်များ ထည့်ခြင်း -->
         <div class="card guide-step">
           <div class="step-num">၁</div>
-          <h4>အရေးပေါ်ဖုန်းနံပါတ်များ ထည့်သွင်းပါ</h4>
-          <p>
-            ဦးစွာ <strong>'ပြင်ဆင်ရန်' (Settings)</strong> သို့သွားပြီး
-            မိသားစုဖုန်းနံပါတ် (၂) ခုနှင့် ရှေ့နေဖုန်းနံပါတ်ကို ရိုက်ထည့်ပြီး
-            သိမ်းဆည်းပါ။ ဒါမှသာ SOS ခလုတ်က အလုပ်လုပ်မည်ဖြစ်သည်။
-          </p>
+          <div class="step-body">
+            <h4>အရေးပေါ်ဖုန်းများ ကြိုတင်ထည့်ပါ</h4>
+            <p>
+              <strong>'ပြင်ဆင်ရန်' (Settings)</strong> သို့သွားပြီး
+              မိသားစုဖုန်းနံပါတ် (၂) ခုနှင့် ရှေ့နေဖုန်းနံပါတ်တို့ကို ရိုက်ထည့်၍
+              'သိမ်းဆည်းမည်' ကို နှိပ်ပါ။ ဒါမှသာ SOS ခလုတ်နှိပ်သည့်အခါ
+              ၎င်းတို့ကို တိုက်ရိုက်ခေါ်ဆိုနိုင်မည်ဖြစ်သည်။
+            </p>
+          </div>
         </div>
 
+        <!-- အဆင့် ၂: SOS အသုံးပြုပုံ -->
         <div class="card guide-step">
           <div class="step-num">၂</div>
-          <h4>SOS ခလုတ် အသုံးပြုပုံ</h4>
-          <p>
-            အရေးပေါ်အခြေအနေတွင်
-            <strong>SOS ခလုတ်ကို ၃ စက္ကန့်ကြာ</strong> ဖိထားပါ။ App က
-            သင်၏တည်နေရာကို Database သို့ ပို့ပေးမည်ဖြစ်ပြီး ဖုန်းခေါ်ဆိုရန်
-            ခလုတ်များ ပေါ်လာပါလိမ့်မည်။
-          </p>
+          <div class="step-body">
+            <h4>SOS ခလုတ် ၃ စက္ကန့် ဖိထားပါ</h4>
+            <p>
+              အရေးပေါ်အခြေအနေတွင် SOS ကို ၃ စက္ကန့်ဖိထားပါ။ သင်၏တည်နေရာ (Map
+              Link) ကို Database သို့ ပို့ပေးပါမည်။ ပြီးနောက် ပေါ်လာသော
+              ခလုတ်များကို နှိပ်၍ မိသားစုနှင့် ရှေ့နေကို ဖုန်းခေါ်ပါ။ တည်နေရာ
+              Link ကို Copy ကူး၍ SMS လည်း ပို့နိုင်ပါသည်။
+            </p>
+          </div>
         </div>
 
+        <!-- အဆင့် ၃: အခွင့်အရေးများ -->
         <div class="card guide-step">
           <div class="step-num">၃</div>
-          <h4>အခွင့်အရေးများကို ဖတ်ရှုပါ</h4>
-          <p>
-            <strong>'အခွင့်အရေး'</strong> ကဏ္ဍတွင် ICE နှင့် ထိပ်တိုက်တွေ့လျှင်
-            ဘာလုပ်ရမလဲဆိုသည်ကို ကြိုတင်ဖတ်ရှုထားပါ။ တံခါးမဖွင့်ရန်နှင့်
-            စကားမပြောဘဲနေပိုင်ခွင့်ကို သေချာမှတ်သားထားပါ။
-          </p>
+          <div class="step-body">
+            <h4>နေရာအလိုက် အခွင့်အရေးများ</h4>
+            <p>
+              <strong>'အခွင့်အရေး'</strong> ကဏ္ဍတွင် အိမ်၊ လမ်းပေါ်၊ ဆိုင်နှင့်
+              ကားထဲတွင် ICE နှင့် တွေ့လျှင် ဘာလုပ်ရမလဲဆိုသည်ကို အသေးစိတ်
+              ဖတ်ရှုပါ။ တရားသူကြီးလက်မှတ်ပါသော ဝရမ်းစာ (Judicial Warrant) ကို
+              မည်သို့စစ်ဆေးရမည်ကို လေ့လာထားပါ။
+            </p>
+          </div>
         </div>
 
+        <!-- အဆင့် ၄: ပြည့်စုံသော ပြင်ဆင်မှု -->
         <div class="card guide-step">
           <div class="step-num">၄</div>
-          <h4>တည်နေရာ (Location) ဖွင့်ထားပါ</h4>
+          <div class="step-body">
+            <h4>ကျန်းမာရေးနှင့် မိသားစု ပြင်ဆင်မှု</h4>
+            <p>
+              <strong>'ပြင်ဆင်ရန်'</strong> ရှိ Checklist များကို အသုံးပြု၍
+              သောက်နေကျဆေးဝါး၊ အဝတ်အထည်၊ ငွေကြေးစီမံမှုနှင့် ကလေးများအတွက် Care
+              Plan များကို အဆင်သင့် ပြင်ထားပါ။
+            </p>
+          </div>
+        </div>
+
+        <!-- အဆင့် ၅: သတင်းပေးပို့ခြင်း -->
+        <div class="card guide-step">
+          <div class="step-num">၅</div>
+          <div class="step-body">
+            <h4>သတင်းနှင့် မီဒီယာ ပေးပို့ခြင်း</h4>
+            <p>
+              ICE စစ်ဆေးနေသည်ကို မြင်ပါက
+              <strong>'သတင်းပို့ရန်'</strong> မှတစ်ဆင့် စာသား၊ ဓာတ်ပုံ သို့မဟုတ်
+              အသံဖိုင်များဖြင့် သတင်းပို့နိုင်ပါသည်။ သင်ပို့လိုက်သော သတင်းသည်
+              ပင်မစာမျက်နှာရှိ Update နေရာတွင် အလိုအလျောက် ပေါ်လာမည်ဖြစ်ပြီး
+              အခြားသူများကို သတိပေးနိုင်မည်ဖြစ်သည်။
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="warning-box"
+          style="background: #e0f2fe; border-color: #7dd3fc; color: #0369a1"
+        >
+          <i class="fas fa-info-circle"></i>
           <p>
-            SOS စနစ် ကောင်းမွန်စွာ အလုပ်လုပ်ရန် သင့်ဖုန်း၏
-            <strong>Location (GPS)</strong> ကို အမြဲတမ်း ဖွင့်ထားပေးရန်
-            လိုအပ်ပါသည်။
+            <strong>မှတ်ချက်:</strong> SOS စနစ် အလုပ်လုပ်ရန် သင့်ဖုန်း၏ တည်နေရာ
+            (Location/GPS) ကို အမြဲဖွင့်ထားရန် လိုအပ်ပါသည်။
           </p>
         </div>
       </section>

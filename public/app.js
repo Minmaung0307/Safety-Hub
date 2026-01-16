@@ -163,6 +163,12 @@ async function submitReport() {
 
 // ၅။ App စတင်ခြင်း
 window.onload = () => {
+    // ၁။ Home Page အတွက် နောက်ဆုံးရ ၃ ခုပဲ ဖတ်မယ်
+    loadNews('home-news-feed', 3); 
+    
+    // ၂။ News Page အတွက် နောက်ဆုံးရ ၂၀ အထိ ဖတ်မယ်
+    loadNews('full-news-feed', 20);
+    
     showView('home');
 };
 

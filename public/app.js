@@ -26,6 +26,9 @@ function showView(viewId) {
     // View အလိုက် သတင်း Load လုပ်ပါ
     if (viewId === 'home') loadNews('home-news-feed', 3);
     if (viewId === 'news') loadNews('news-feed', 20);
+    if (viewId === 'chat') {
+        loadChats();
+    }
 }
 
 // ၂။ SOS Logic
@@ -168,7 +171,7 @@ window.onload = () => {
     
     // ၂။ News Page အတွက် နောက်ဆုံးရ ၂၀ အထိ ဖတ်မယ်
     loadNews('full-news-feed', 20);
-    
+
     showView('home');
 };
 
@@ -190,3 +193,75 @@ function closeOnboarding() {
 }
 
 // ပင်မစာမျက်နှာ (Home) မှာ ပြန်ကြည့်ဖို့ ခလုတ်ထည့်ရန် showView ထဲမှာ ထည့်သွင်းနိုင်သည်
+
+// Emoji တစ်ခုကို နှိပ်လိုက်ရင် Input ထဲကို ထည့်ပေးမယ့် function
+function addEmoji(emoji) {
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) {
+        chatInput.value += emoji; // စာရိုက်ကွက်ထဲကို emoji ပေါင်းထည့်မယ်
+        chatInput.focus(); // Cursor ကို input ထဲမှာပဲ ပြန်ထားမယ်
+    }
+}
+
+// ၂။ Enter ခေါက်ရင် စာပို့ပေးဖို့
+document.getElementById('chat-input')?.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        sendChatMessage();
+    }
+});
+
+// ၃။ Chat Message ပို့ခြင်း
+function sendChatMessage() {
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg || !db) return;
+
+    let myName = localStorage.getItem('chatNickname');
+    if (!myName) {
+        myName = "User-" + Math.floor(Math.random() * 9000);
+        localStorage.setItem('chatNickname', myName);
+    }
+
+    db.collection("chats").add({
+        sender: myName,
+        text: msg,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+        input.value = ""; // စာပို့ပြီးရင် ဖျက်မယ်
+        input.focus(); // စာပြန်ရိုက်ဖို့ အဆင်သင့်ဖြစ်အောင် cursor ထားမယ်
+        
+        // အောက်ဆုံးကို scroll ဆင်းမယ်
+        const container = document.getElementById('chat-messages');
+        container.scrollTop = container.scrollHeight;
+    });
+}
+
+// ၄။ Chat Load လုပ်ခြင်း (showView('chat') ခေါ်တဲ့အခါ ဒါကိုပါ တွဲခေါ်ပါ)
+function loadChats() {
+    const chatContainer = document.getElementById('chat-messages');
+    if (!chatContainer || !db) return;
+
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    db.collection("chats")
+      .where("timestamp", ">=", sevenDaysAgo)
+      .orderBy("timestamp", "asc")
+      .onSnapshot(snap => {
+        chatContainer.innerHTML = "";
+        const myName = localStorage.getItem('chatNickname');
+        
+        snap.forEach(doc => {
+            const data = doc.data();
+            const isMe = data.sender === myName;
+            
+            chatContainer.innerHTML += `
+                <div class="msg ${isMe ? 'me' : 'others'}">
+                    <span class="msg-info">${data.sender}</span>
+                    ${data.text}
+                </div>
+            `;
+        });
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    });
+}

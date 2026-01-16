@@ -342,3 +342,259 @@ textarea {
     line-height: 1.6;
     color: #4b5563;
 }
+
+/* Chat Styles */
+.chat-container {
+    height: 60vh;
+    overflow-y: auto;
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.chat-warning {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.msg {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+.msg.others {
+    background: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.msg.me {
+    background: var(--main);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+.msg-info {
+    font-size: 10px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+    display: block;
+}
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+    padding-top: 15px;
+}
+.chat-input-area input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 10px 18px;
+    font-size: 15px;
+}
+.chat-input-area button {
+    background: var(--main);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Chat View Layout */
+#chat-view {
+    display: flex;
+    flex-direction: column;
+    height: 90vh; /* View အရည်အသွေးကို ဖုန်း screen အပြည့်နီးပါး ယူမယ် */
+}
+
+.chat-container {
+    flex: 1; /* အပေါ်က space အကုန်ယူမယ် */
+    overflow-y: auto;
+    background: #f1f5f9;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+/* Chat Footer (Input & Emoji) */
+.chat-footer {
+    margin-bottom: 65px;
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+.emoji-bar {
+    display: flex;
+    gap: 15px;
+    padding: 5px 0 10px 0;
+    overflow-x: auto;
+    font-size: 20px;
+}
+
+.emoji-bar span {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.emoji-bar span:active {
+    transform: scale(1.3);
+}
+
+.chat-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#chat-input {
+    flex: 1;
+    height: 45px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 25px;
+    padding: 0 15px;
+    font-size: 15px;
+    background: #f8fafc;
+}
+
+#chat-send-btn {
+    width: 45px;
+    height: 45px;
+    background: var(--main);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Messages Bubbles */
+.msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    position: relative;
+    line-height: 1.4;
+}
+.msg.others {
+    background: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    color: #1e293b;
+}
+.msg.me {
+    background: var(--main);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+.msg-info {
+    font-size: 10px;
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.emoji-bar {
+    display: flex;
+    justify-content: space-around; /* အကွာအဝေး ညီညီညာညာ ဖြစ်သွားအောင် */
+    padding: 10px 5px;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.emoji-bar span {
+    font-size: 24px; /* Emoji အရွယ်အစားကို နည်းနည်းထပ်ကြီးလိုက်တယ် */
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* ဖုန်းမှာနှိပ်ရင် အရောင်မပွင့်အောင် */
+}
+
+.emoji-bar span:active {
+    transform: scale(1.4); /* နှိပ်လိုက်ရင် ပိုကြီးလာတဲ့ အကျိုးသက်ရောက်မှု */
+}
+
+/* Chat View Layout */
+#chat-view {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px); /* Screen အမြင့်ထဲက Header နဲ့ Nav ကို နှုတ်မယ် */
+    position: relative;
+}
+
+.chat-container {
+    flex: 1; /* အပေါ်က နေရာအလွတ်အကုန်ယူမယ် */
+    overflow-y: auto;
+    background: #f1f5f9;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+}
+
+/* စာရိုက်သည့်နေရာ Wrapper */
+.chat-input-wrapper {
+    background: white;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 60px; /* bottom-nav အတွက် နေရာချန်ထားတာ (ဒါက အရေးကြီးဆုံး) */
+}
+
+.emoji-bar {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 10px;
+}
+
+.chat-controls {
+    display: flex;
+    gap: 10px;
+}
+
+#chat-input {
+    flex: 1;
+    height: 45px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 25px;
+    padding: 0 15px;
+    font-size: 16px; /* iPhone မှာ auto-zoom မဖြစ်အောင် ၁၆ ထားရမယ် */
+    background: #f8fafc;
+}
+
+#chat-send-btn {
+    width: 45px;
+    height: 45px;
+    background: var(--main);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+}

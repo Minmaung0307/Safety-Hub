@@ -149,7 +149,7 @@
       <!-- View 4: Rights -->
       <section id="rights-view" class="view">
         <div class="view-header">
-          <button onclick="showView('home')" class="back-btn">←</button>
+          <button onclick="showView('home')" class="back-btn">← နောက်သို့</button>
           <h2 class="section-title">သင့်အခွင့်အရေးများ (Rights)ကို သိရှိပါ</h2>
         </div>
 
@@ -267,7 +267,7 @@
       <!-- View 5: Legal -->
       <section id="legal-view" class="view">
         <div class="view-header">
-          <button onclick="showView('home')" class="back-btn">←</button>
+          <button onclick="showView('home')" class="back-btn">← နောက်သို့</button>
           <h2 class="section-title">ဥပဒေရေးရာ အကူအညီများ</h2>
         </div>
 
@@ -379,6 +379,41 @@
           <div class="aclu-card">
             <span>Phil (PA)</span>
             <a href="tel:2155921513">215-592-1513</a>
+          </div>
+          <!-- New Jersey -->
+          <div class="aclu-card">
+            <span>NJ (New Jersey)</span>
+            <a href="tel:9736422084">973-642-2084</a>
+          </div>
+
+          <!-- California - Northern (SF) -->
+          <div class="aclu-card">
+            <span>CA (San Francisco/North)</span>
+            <a href="tel:4156212493">415-621-2493</a>
+          </div>
+
+          <!-- California - Southern (LA) -->
+          <div class="aclu-card">
+            <span>CA (Los Angeles/South)</span>
+            <a href="tel:2139779500">213-977-9500</a>
+          </div>
+
+          <!-- California - San Diego -->
+          <div class="aclu-card">
+            <span>CA (San Diego Area)</span>
+            <a href="tel:6192322121">619-232-2121</a>
+          </div>
+
+          <!-- Texas -->
+          <div class="aclu-card">
+            <span>TX (Texas)</span>
+            <a href="tel:7139428146">713-942-8146</a>
+          </div>
+
+          <!-- Florida -->
+          <div class="aclu-card">
+            <span>FL (Florida)</span>
+            <a href="tel:7863632700">786-363-2700</a>
           </div>
         </div>
       </section>
@@ -522,7 +557,7 @@
 
       <!-- View: Settings (ကိုယ်ရေးအချက်အလက် ပြင်ဆင်ရန်) -->
       <section id="settings-view" class="view">
-        <button class="back-btn" onclick="showView('home')">← ရှေ့သို့</button>
+        <button class="back-btn" onclick="showView('home')">← နောက်သို့</button>
         <h2 class="section-title">အရေးပေါ် ဆက်သွယ်ရန်များ</h2>
 
         <div class="card">
@@ -563,6 +598,85 @@
           >
             အချက်အလက်များ သိမ်းဆည်းမည်
           </button>
+        </div>
+      </section>
+
+      <!-- View: Chat (အသိုက်အဝန်း စကားဝိုင်း) -->
+      <section id="chat-view" class="view">
+        <div class="view-header">
+          <button onclick="showView('home')" class="back-btn">
+            ← နောက်သို့
+          </button>
+          <h2>အသိုက်အဝန်း စကားဝိုင်း</h2>
+        </div>
+
+        <div class="chat-warning">
+          <i class="fas fa-user-secret"></i>
+          <span
+            >လုံခြုံရေးအတွက် နာမည်ရင်း မသုံးပါနှင့်။ စာများကို ၁ ပတ်အကြာတွင်
+            ဖျက်ပါမည်။</span
+          >
+        </div>
+
+        <!-- စာတိုများ ပေါ်မည့်နေရာ -->
+        <div id="chat-messages" class="chat-container">
+          <p class="status-txt">စကားဝိုင်းကို ရယူနေသည်...</p>
+        </div>
+
+        <!-- Emoji & Input Area -->
+        <div class="chat-input-wrapper">
+          <div class="chat-footer">
+            <div class="chat-controls">
+              <input
+                type="text"
+                id="chat-input"
+                placeholder="စာရိုက်ပါ..."
+                autocomplete="off"
+              />
+              <button onclick="sendChatMessage()" id="chat-send-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <!-- Emoji Quick Bar -->
+            <div class="emoji-bar">
+              <span onclick="addEmoji('👋')" title="Hi">👋</span>
+              <!-- နှုတ်ဆက်တာ -->
+              <span onclick="addEmoji('😊')" title="Happy">😊</span>
+              <!-- ပြုံးတာ -->
+              <span onclick="addEmoji('😭')" title="Sad">😭</span>
+              <!-- ငိုတာ -->
+              <span onclick="addEmoji('👍')" title="Like">👍</span>
+              <!-- ကြိုက်တယ်/ဟုတ်ပြီ -->
+              <span onclick="addEmoji('👎')" title="Dislike">👎</span>
+              <!-- မကြိုက်ဘူး/မဟုတ်ဘူး -->
+              <span onclick="addEmoji('❤️')" title="Love">❤️</span>
+              <!-- ချစ်ခြင်း/အားပေးခြင်း -->
+              <span onclick="addEmoji('🙏')" title="Thank You">🙏</span>
+              <!-- ကျေးဇူးပါ/ဆုတောင်း -->
+              <span onclick="addEmoji('🤔')" title="Thinking">🤔</span>
+              <!-- စဉ်းစားနေတာ -->
+              <span onclick="addEmoji('🛡️')">🛡️</span>
+              <span onclick="addEmoji('⚠️')">⚠️</span>
+              <!-- <span onclick="addEmoji('🙏')">🙏</span>
+            <span onclick="addEmoji('🇲🇲')">🇲🇲</span> -->
+              <span onclick="addEmoji('🤝')">🤝</span>
+              <span onclick="addEmoji('📢')">📢</span>
+              <span onclick="addEmoji('📍')">📍</span>
+              <span onclick="addEmoji('💡')">💡</span>
+            </div>
+          </div>
+
+          <!-- <div class="chat-input-group">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="စာရိုက်ပါ..."
+              autocomplete="off"
+            />
+            <button onclick="sendChatMessage()" id="chat-send-btn">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div> -->
         </div>
       </section>
 
@@ -680,6 +794,9 @@
       </div>
       <div class="nav-btn" onclick="showView('report')">
         <i class="fas fa-plus-circle"></i><span>သတင်းပို့</span>
+      </div>
+      <div class="nav-btn" onclick="showView('chat')">
+        <i class="fas fa-comments"></i><span>Chat</span>
       </div>
     </nav>
 

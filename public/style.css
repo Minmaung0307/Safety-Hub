@@ -1,601 +1,937 @@
-:root { 
-    --main: #1e3a8a; 
-    --danger: #dc2626; 
-    --card-bg: #ffffff; 
-    --input-bg: #f8fafc;
-    --text-main: #1c1e21;
-    --text-muted: #64748b;
+:root {
+  --main: #1e3a8a;
+  --danger: #dc2626;
+  --card-bg: #ffffff;
+  --input-bg: #f8fafc;
+  --text-main: #1c1e21;
+  --text-muted: #64748b;
 }
 
-body { 
-    margin: 0; 
-    font-family: 'Segoe UI', -apple-system, sans-serif; 
-    background: #f0f2f5; 
-    color: var(--text-main); 
-    overflow-x: hidden; 
+body {
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, sans-serif;
+  background: #f0f2f5;
+  color: var(--text-main);
+  overflow-x: hidden;
 }
 
 /* Header */
-.main-header { 
-    background: var(--main); 
-    color: white; 
-    text-align: center; 
-    padding: 25px 10px; 
-    border-radius: 0 0 25px 25px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+.main-header {
+  background: var(--main);
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.main-header .logo { font-size: 22px; font-weight: 800; letter-spacing: 1px; }
+.main-header .logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
 
 /* Views Logic */
-.view { display: none !important; } 
-.view.active { display: block !important; padding: 15px; padding-bottom: 100px; animation: fadeIn 0.3s; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.view {
+    display: none !important;
+    min-height: 100vh; /* View တိုင်း အနည်းဆုံး Screen အပြည့်ရှိရမည် */
+    box-sizing: border-box;
+}
+.view.active {
+  display: block !important;
+  padding: 15px;
+  padding-bottom: 100px;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* SOS Button Style */
-.sos-wrapper { text-align: center; margin: 25px 0; }
-.sos-circle { 
-    width: 120px; height: 120px; border-radius: 50%; 
-    background: var(--danger); border: 8px solid #fecaca; 
-    color: white; font-size: 26px; font-weight: bold; 
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); 
-    cursor: pointer; transition: 0.2s; 
+.sos-wrapper {
+  text-align: center;
+  margin: 25px 0;
 }
-.sos-circle:active { transform: scale(0.9); background: #991b1b; }
+.sos-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--danger);
+  border: 8px solid #fecaca;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.sos-circle:active {
+  transform: scale(0.9);
+  background: #991b1b;
+}
 
 /* Settings & Form Groups (New Beautiful Inputs) */
 .form-group {
-    margin-bottom: 20px;
-    text-align: left;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .form-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--main);
-    margin-bottom: 8px;
-    margin-left: 5px;
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--main);
+  margin-bottom: 8px;
+  margin-left: 5px;
 }
 
-.large-input { 
-    width: 100%; 
-    height: 50px; 
-    border: 1.5px solid #e2e8f0; 
-    border-radius: 12px; 
-    padding: 0 15px; 
-    font-size: 16px; 
-    background: var(--input-bg);
-    box-sizing: border-box;
-    transition: all 0.2s;
+.large-input {
+  width: 100%;
+  height: 50px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0 15px;
+  font-size: 16px;
+  background: var(--input-bg);
+  box-sizing: border-box;
+  transition: all 0.2s;
 }
 
 .large-input:focus {
-    outline: none;
-    border-color: var(--main);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.05);
+  outline: none;
+  border-color: var(--main);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.05);
 }
 
 /* Quick Menu Grid */
-.quick-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-.menu-box { background: var(--card-bg); padding: 20px; border-radius: 18px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; }
-.menu-box i { font-size: 26px; color: var(--main); margin-bottom: 10px; display: block; }
-.menu-box span { font-size: 14px; font-weight: 600; }
+.quick-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+.menu-box {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+.menu-box i {
+  font-size: 26px;
+  color: var(--main);
+  margin-bottom: 10px;
+  display: block;
+}
+.menu-box span {
+  font-size: 14px;
+  font-weight: 600;
+}
 
 /* Cards & Content */
-.card { background: var(--card-bg); padding: 20px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 15px; }
-.section-title { font-size: 18px; font-weight: 700; color: var(--main); margin-bottom: 20px; text-align: center; }
+.card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--main);
+  margin-bottom: 20px;
+  text-align: center;
+}
 
 /* Buttons */
-.btn-primary { 
-    width: 100%; 
-    padding: 16px; 
-    background: var(--main); 
-    color: white; 
-    border: none; 
-    border-radius: 15px; 
-    font-weight: bold; 
-    font-size: 16px; 
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(30, 58, 138, 0.2);
-    transition: 0.2s;
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(30, 58, 138, 0.2);
+  transition: 0.2s;
 }
-.btn-primary:active { transform: scale(0.98); opacity: 0.9; }
+.btn-primary:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
 
-.btn-outline { 
-    width: 100%; padding: 12px; background: none; 
-    border: 1.5px solid var(--main); color: var(--main); 
-    border-radius: 12px; font-weight: bold; margin-top: 10px; 
+.btn-outline {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: 1.5px solid var(--main);
+  color: var(--main);
+  border-radius: 12px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 /* Navigation Bar */
 .bottom-nav {
-    margin-bottom: 25px;
-    position: fixed; bottom: 0; width: 100%; 
-    background: white; display: flex; padding: 12px 0; 
-    border-top: 1px solid #eee; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); 
-    z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
 }
-.nav-btn { flex: 1; text-align: center; color: #64748b; font-size: 11px; cursor: pointer; }
-.nav-btn.active { color: var(--main); font-weight: bold; }
-.nav-btn i { display: block; font-size: 20px; margin-bottom: 3px; }
+
+.nav-btn {
+  flex: 1;
+  text-align: center;
+  color: #64748b; /* မနှိပ်ရသေးခင် အရောင် (မီးခိုးရောင်) */
+  font-size: 11px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* နှိပ်လိုက်တဲ့အခါ (Active ဖြစ်တဲ့အခါ) ပေါ်မယ့်အရောင် */
+.nav-btn.active {
+  color: var(--main) !important; /* သင့် project ရဲ့ အပြာရောင် */
+  font-weight: bold;
+}
+
+.nav-btn i {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 3px;
+}
 
 /* Utilities */
-.hidden { display: none !important; }
-.emergency-call { 
-    display: block; margin-top: 12px; padding: 14px; 
-    background: #16a34a; color: white; border-radius: 50px; 
-    text-decoration: none; font-weight: bold; text-align: center;
+.hidden {
+  display: none !important;
 }
-.back-btn { 
-    border: none; background: #e2e8f0; padding: 10px 18px; 
-    border-radius: 12px; font-weight: bold; color: var(--main); 
-    margin-bottom: 15px; cursor: pointer;
+.emergency-call {
+  display: block;
+  margin-top: 12px;
+  padding: 14px;
+  background: #16a34a;
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
 }
-textarea { 
-    width: 100%; height: 120px; border: 1.5px solid #e2e8f0; 
-    border-radius: 15px; padding: 12px; font-size: 16px; 
-    font-family: inherit; background: var(--input-bg);
+.back-btn {
+  border: none;
+  background: #e2e8f0;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: var(--main);
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+textarea {
+  width: 100%;
+  height: 120px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 15px;
+  padding: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  background: var(--input-bg);
 }
 
 /* Guide Steps Design */
 .guide-step {
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
-    border-left: 4px solid var(--main);
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  border-left: 4px solid var(--main);
 }
 .step-num {
-    background: var(--main);
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
+  background: var(--main);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
 }
-.guide-step h4 { margin: 0 0 5px 0; color: var(--main); }
-.guide-step p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--text-muted); }
+.guide-step h4 {
+  margin: 0 0 5px 0;
+  color: var(--main);
+}
+.guide-step p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
 
 /* Modal Overlay (Welcome Popup) */
 .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
 }
 .modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 25px;
-    width: 85%;
-    max-width: 400px;
-    text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  width: 85%;
+  max-width: 400px;
+  text-align: center;
 }
 /* Warning Box */
 .warning-box {
-    background: #fffbeb;
-    border: 1px solid #fcd34d;
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    color: #92400e;
-    font-size: 13px;
-    line-height: 1.5;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  color: #92400e;
+  font-size: 13px;
+  line-height: 1.5;
 }
-.warning-box i { font-size: 18px; margin-bottom: 5px; display: block; }
+.warning-box i {
+  font-size: 18px;
+  margin-bottom: 5px;
+  display: block;
+}
 
 /* Legal Items */
-.legal-item { padding: 10px 0; }
-.legal-item p { font-size: 13px; color: var(--text-muted); margin: 5px 0 10px 0; }
-.call-link-btn { 
-    display: inline-block; background: var(--main); color: white; 
-    padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;
+.legal-item {
+  padding: 10px 0;
+}
+.legal-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 5px 0 10px 0;
+}
+.call-link-btn {
+  display: inline-block;
+  background: var(--main);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
 }
 .web-link-btn {
-    display: inline-block; background: #64748b; color: white; 
-    padding: 8px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;
+  display: inline-block;
+  background: #64748b;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* ACLU Grid */
-.aclu-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 15px; }
-.aclu-card { 
-    background: white; padding: 15px; border-radius: 12px; 
-    display: flex; justify-content: space-between; align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+.aclu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 15px;
 }
-.aclu-card span { font-weight: 600; font-size: 14px; color: var(--text-main); }
-.aclu-card a { color: var(--main); text-decoration: none; font-weight: bold; border: 1px solid var(--main); padding: 5px 10px; border-radius: 8px; font-size: 13px; }
+.aclu-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+.aclu-card span {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-main);
+}
+.aclu-card a {
+  color: var(--main);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--main);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
 
-.sub-title { font-size: 16px; font-weight: 700; color: var(--main); margin: 20px 0 5px 0; text-align: center; }
+.sub-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--main);
+  margin: 20px 0 5px 0;
+  text-align: center;
+}
 
 /* Rights Detail View */
 .rights-detail {
-    text-align: left;
-    border-top: 5px solid var(--main);
+  text-align: left;
+  border-top: 5px solid var(--main);
 }
 .rights-header {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--main);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--main);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .rights-detail h4 {
-    font-size: 15px;
-    color: var(--danger);
-    margin: 10px 0;
-    line-height: 1.4;
+  font-size: 15px;
+  color: var(--danger);
+  margin: 10px 0;
+  line-height: 1.4;
 }
 .rights-detail ul {
-    padding-left: 20px;
-    margin: 10px 0;
+  padding-left: 20px;
+  margin: 10px 0;
 }
 .rights-detail li {
-    font-size: 14px;
-    margin-bottom: 8px;
-    line-height: 1.5;
+  font-size: 14px;
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
 .pro-tip {
-    background: #e0f2fe;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 13px;
-    color: #0369a1;
-    font-style: italic;
+  background: #e0f2fe;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #0369a1;
+  font-style: italic;
 }
 
 /* Document Table */
 .doc-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 }
-.doc-table th, .doc-table td {
-    border: 1px solid #eee;
-    padding: 10px;
-    font-size: 13px;
-    text-align: left;
+.doc-table th,
+.doc-table td {
+  border: 1px solid #eee;
+  padding: 10px;
+  font-size: 13px;
+  text-align: left;
 }
-.doc-table th { background: #f8fafc; color: var(--main); }
+.doc-table th {
+  background: #f8fafc;
+  color: var(--main);
+}
 .warning-txt {
-    color: var(--danger);
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 15px;
-    padding: 10px;
-    border: 1px dashed var(--danger);
-    border-radius: 10px;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px dashed var(--danger);
+  border-radius: 10px;
 }
 
 /* Prep Card & Checklist */
 .prep-card {
-    text-align: left;
-    border-bottom: 4px solid #e2e8f0;
+  text-align: left;
+  border-bottom: 4px solid #e2e8f0;
 }
 .prep-header {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--main);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--main);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .check-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .check-group label {
-    font-size: 14px;
-    line-height: 1.5;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    cursor: pointer;
-    color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  color: #475569;
 }
 .check-group input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin-top: 2px;
-    flex-shrink: 0;
-    accent-color: var(--main);
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--main);
 }
 .prep-card .status-txt {
-    font-size: 13px;
-    color: #64748b;
-    font-style: italic;
-    margin-bottom: 15px;
-    background: #f8fafc;
-    padding: 10px;
-    border-radius: 8px;
+  font-size: 13px;
+  color: #64748b;
+  font-style: italic;
+  margin-bottom: 15px;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .guide-step {
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
-    border-left: 5px solid var(--main);
-    padding: 20px;
-    margin-bottom: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  border-left: 5px solid var(--main);
+  padding: 20px;
+  margin-bottom: 15px;
 }
 .step-body {
-    text-align: left;
+  text-align: left;
 }
 .step-body h4 {
-    margin: 0 0 8px 0;
-    font-size: 16px;
-    color: var(--main);
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: var(--main);
 }
 .step-body p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #4b5563;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
 }
 
 /* Chat Styles */
 .chat-container {
-    height: 60vh;
-    overflow-y: auto;
-    background: #f8fafc;
-    border-radius: 20px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  height: 60vh;
+  overflow-y: auto;
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .chat-warning {
-    background: #fee2e2;
-    color: #991b1b;
-    padding: 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .msg {
-    max-width: 80%;
-    padding: 10px 15px;
-    border-radius: 18px;
-    font-size: 14px;
-    line-height: 1.4;
-    word-wrap: break-word;
+  max-width: 80%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 .msg.others {
-    background: white;
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  background: white;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 .msg.me {
-    background: var(--main);
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
+  background: var(--main);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
 }
 .msg-info {
-    font-size: 10px;
-    opacity: 0.7;
-    margin-bottom: 4px;
-    display: block;
+  font-size: 10px;
+  opacity: 0.7;
+  margin-bottom: 4px;
+  display: block;
 }
 .chat-input-area {
-    display: flex;
-    gap: 10px;
-    padding-top: 15px;
+  display: flex;
+  gap: 10px;
+  padding-top: 15px;
 }
 .chat-input-area input {
-    flex: 1;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    padding: 10px 18px;
-    font-size: 15px;
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 10px 18px;
+  font-size: 15px;
 }
 .chat-input-area button {
-    background: var(--main);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-/* Chat View Layout */
-#chat-view {
-    display: flex;
-    flex-direction: column;
-    height: 90vh; /* View အရည်အသွေးကို ဖုန်း screen အပြည့်နီးပါး ယူမယ် */
+  background: var(--main);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .chat-container {
-    flex: 1; /* အပေါ်က space အကုန်ယူမယ် */
-    overflow-y: auto;
-    background: #f1f5f9;
-    border-radius: 15px;
-    padding: 15px;
+  flex: 1; /* အပေါ်က နေရာအလွတ်အကုန်ယူမယ် */
+  overflow-y: auto;
+  background: #f1f5f9;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  -webkit-overflow-scrolling: touch; /* iOS မှာ Scroll ချောမွေ့စေရန် */
+}
+/* Chat View Layout */
+#chat-view {
+    /* Header (70px) နဲ့ Nav (60px) ကို နှုတ်ပြီး ကျန်တာကို အပြည့်ယူမည် */
+    height: calc(100vh - 130px); 
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 10px;
+    padding-bottom: 0 !important; /* Chat အတွက် အောက်ခြေကွက်လပ် မလိုပါ */
+    position: relative;
 }
 
 /* Chat Footer (Input & Emoji) */
 .chat-footer {
-    margin-bottom: 85px;
-    background: white;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 85px;
+  background: white;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .emoji-bar {
-    display: flex;
-    gap: 15px;
-    padding: 5px 0 10px 0;
-    overflow-x: auto;
-    font-size: 20px;
+  display: flex;
+  gap: 15px;
+  padding: 5px 0 10px 0;
+  overflow-x: auto;
+  font-size: 20px;
 }
 
 .emoji-bar span {
-    cursor: pointer;
-    transition: 0.2s;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .emoji-bar span:active {
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
 
 .chat-input-group {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 #chat-input {
-    flex: 1;
-    height: 45px;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 25px;
-    padding: 0 15px;
-    font-size: 15px;
-    background: #f8fafc;
+  flex: 1;
+  height: 45px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 25px;
+  padding: 0 15px;
+  font-size: 15px;
+  background: #f8fafc;
 }
 
 #chat-send-btn {
-    width: 45px;
-    height: 45px;
-    background: var(--main);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  width: 45px;
+  height: 45px;
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 /* Messages Bubbles */
 .msg {
-    max-width: 85%;
-    padding: 10px 14px;
-    border-radius: 18px;
-    font-size: 14px;
-    position: relative;
-    line-height: 1.4;
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  position: relative;
+  line-height: 1.4;
 }
 .msg.others {
-    background: white;
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
-    color: #1e293b;
+  background: white;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+  color: #1e293b;
 }
 .msg.me {
-    background: var(--main);
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
+  background: var(--main);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
 }
 .msg-info {
-    font-size: 10px;
-    display: block;
-    margin-bottom: 3px;
-    font-weight: bold;
-    opacity: 0.8;
+  font-size: 10px;
+  display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
+  opacity: 0.8;
 }
 
 .emoji-bar {
-    display: flex;
-    justify-content: space-around; /* အကွာအဝေး ညီညီညာညာ ဖြစ်သွားအောင် */
-    padding: 10px 5px;
-    background: #f8fafc;
-    border-radius: 12px;
-    margin-bottom: 8px;
-    border: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-around; /* အကွာအဝေး ညီညီညာညာ ဖြစ်သွားအောင် */
+  padding: 10px 5px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #e2e8f0;
 }
 
 .emoji-bar span {
-    font-size: 24px; /* Emoji အရွယ်အစားကို နည်းနည်းထပ်ကြီးလိုက်တယ် */
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent; /* ဖုန်းမှာနှိပ်ရင် အရောင်မပွင့်အောင် */
+  font-size: 24px; /* Emoji အရွယ်အစားကို နည်းနည်းထပ်ကြီးလိုက်တယ် */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; /* ဖုန်းမှာနှိပ်ရင် အရောင်မပွင့်အောင် */
 }
 
 .emoji-bar span:active {
-    transform: scale(1.4); /* နှိပ်လိုက်ရင် ပိုကြီးလာတဲ့ အကျိုးသက်ရောက်မှု */
-}
-
-/* Chat View Layout */
-#chat-view {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 80px); /* Screen အမြင့်ထဲက Header နဲ့ Nav ကို နှုတ်မယ် */
-    position: relative;
-}
-
-.chat-container {
-    flex: 1; /* အပေါ်က နေရာအလွတ်အကုန်ယူမယ် */
-    overflow-y: auto;
-    background: #f1f5f9;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 5px;
-    border-radius: 15px;
+  transform: scale(1.4); /* နှိပ်လိုက်ရင် ပိုကြီးလာတဲ့ အကျိုးသက်ရောက်မှု */
 }
 
 /* စာရိုက်သည့်နေရာ Wrapper */
 .chat-input-wrapper {
-    background: white;
-    padding: 10px;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-    margin-bottom: 60px; /* bottom-nav အတွက် နေရာချန်ထားတာ (ဒါက အရေးကြီးဆုံး) */
+  background: white;
+  padding: 10px;
+  padding-bottom: 20px; /* Input အောက်မှာ နေရာလွတ်ထားရန် */
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 60px; /* bottom-nav အတွက် နေရာချန်ထားတာ (ဒါက အရေးကြီးဆုံး) */
 }
 
 .emoji-bar {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f1f5f9;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 10px;
 }
 
 .chat-controls {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 #chat-input {
-    flex: 1;
-    height: 45px;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 25px;
-    padding: 0 15px;
-    font-size: 16px; /* iPhone မှာ auto-zoom မဖြစ်အောင် ၁၆ ထားရမယ် */
-    background: #f8fafc;
+  flex: 1;
+  height: 45px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 25px;
+  padding: 0 15px;
+  font-size: 16px; /* iPhone မှာ auto-zoom မဖြစ်အောင် ၁၆ ထားရမယ် */
+  background: #f8fafc;
 }
 
 #chat-send-btn {
-    width: 45px;
-    height: 45px;
-    background: var(--main);
+  width: 45px;
+  height: 45px;
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-btn.active i {
+  transform: translateY(-2px); /* Icon လေး နည်းနည်းကြွတက်လာစေရန် */
+}
+
+/* Media Pickers (သတင်းပို့ရန် နေရာ) */
+.media-pickers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ညီတူညီမျှ ၃ ကွက်ခွဲမည် */
+  gap: 12px; /* ခလုတ်တစ်ခုချင်းစီ ကြားအကွာအဝေး */
+  margin: 20px 0;
+}
+
+.media-pickers label {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column; /* Icon နဲ့ စာသားကို အထက်အောက်ထားမည် */
+  align-items: center;
+  justify-content: center;
+  padding: 15px 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* နှိပ်လိုက်ရင် အရောင်ပြောင်းသွားမည့် Effect */
+.media-pickers label:active {
+  transform: scale(0.95);
+  background: #eff6ff;
+  border-color: var(--main);
+}
+
+.media-pickers label i {
+  font-size: 22px;
+  color: var(--main);
+  margin-bottom: 8px; /* Icon နဲ့ စာသားကြား အကွာအဝေး */
+}
+
+.media-pickers label span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ရွေးထားတဲ့ဖိုင်အမည်ပြသည့်နေရာ */
+#file-status {
+  background: #f1f5f9;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--main);
+  text-align: center;
+  margin-bottom: 15px;
+  border: 1px solid #e2e8f0;
+  word-break: break-all; /* စာသားရှည်ရင် အောက်ဆင်းမည် */
+}
+
+/* YouTube Embed Container */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* News Article Link Card */
+.article-link-card {
+    background: #f8fafc;
+    border: 1.5px solid var(--main);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+    display: block;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    /* color: var(--main); */
+    transition: background 0.2s;
+}
+
+.article-link-card:active {
+    background: #f0f7ff;
+}
+.article-link-card i {
+    font-size: 20px;
+    color: #64748b;
+}
+.article-link-card span {
+    font-size: 13px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.article-link-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--main);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.article-link-url {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* YouTube ပေါ်မှာ ခေါင်းစဉ်ပြရန် */
+.yt-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--main);
+    margin-top: 12px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Floating Logout Button */
+.mod-exit-float {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: #ef4444;
     color: white;
     border: none;
-    border-radius: 50%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 3000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Edit/Delete ခလုတ်များ သေချာပေါ်စေရန် */
+.mod-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+}
+
+.btn-mod-edit { color: #0ea5e9; background: none; border: none; font-size: 12px; cursor: pointer; font-weight: bold; }
+.btn-mod-delete { color: #ef4444; background: none; border: none; font-size: 12px; cursor: pointer; font-weight: bold; }
+
+/* Chat Delete Button */
+.chat-mod-del {
+    font-size: 10px;
+    color: #f87171;
+    margin-left: 8px;
     cursor: pointer;
-    flex-shrink: 0;
+    float: right;
 }

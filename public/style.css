@@ -20,7 +20,7 @@ body {
   background: var(--main);
   color: white;
   text-align: center;
-  padding: 25px 10px;
+  padding: 15px 10px;
   border-radius: 0 0 25px 25px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -39,7 +39,7 @@ body {
 .view.active {
   display: block !important;
   padding: 15px;
-  padding-bottom: 100px;
+  padding-bottom: 100px !important;
   animation: fadeIn 0.3s;
 }
 @keyframes fadeIn {
@@ -184,24 +184,35 @@ body {
 
 /* Navigation Bar */
 .bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: white;
-  display: flex;
-  padding: 12px 0;
-  border-top: 1px solid #eee;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Height ကို ၇၀ ကနေ ၇၅ ကြား ထားပေးမှ စာသားဆံ့ပါမယ် */
+    height: 75px; 
+    background: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    z-index: 9999;
+    /* iPhone Notch များအတွက် အောက်ခြေကွက်လပ် ချန်ခြင်း */
+    padding-bottom: env(safe-area-inset-bottom); 
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
 }
 
 .nav-btn {
-  flex: 1;
-  text-align: center;
-  color: #64748b; /* မနှိပ်ရသေးခင် အရောင် (မီးခိုးရောင်) */
-  font-size: 11px;
-  cursor: pointer;
-  transition: 0.2s;
+    display: flex;
+    flex-direction: column; /* Icon နဲ့ စာသားကို အထက်အောက် စီမည် */
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    /* Icon နဲ့ စာသားကြား အကွာအဝေး */
+    gap: 5px; 
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* နှိပ်လိုက်တဲ့အခါ (Active ဖြစ်တဲ့အခါ) ပေါ်မယ့်အရောင် */
@@ -214,6 +225,21 @@ body {
   display: block;
   font-size: 20px;
   margin-bottom: 3px;
+}
+
+/* စာသားများ (မြုတ်မသွားအောင် ဒီနေရာမှာ ပြင်ထားပါတယ်) */
+.nav-btn span {
+    font-size: 11px;
+    font-weight: 600;
+    display: block;
+    white-space: nowrap; /* စာသားကို တစ်ကြောင်းတည်း ဖြစ်စေရန် */
+    line-height: 1;
+}
+
+@media screen and (max-width: 480px) {
+    .bottom-nav {
+        margin-bottom: 21px;
+    }
 }
 
 /* Utilities */
@@ -1055,25 +1081,39 @@ textarea {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    width: 100%;
+    max-width: 600px; /* Mobile မှာ အရမ်းမကားသွားစေရန် */
+    margin: 0 auto;
 }
 
 .support-header-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: #ff4d4d; /* နှလုံးသားအရောင် အနီရောင်ဖျော့ */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    margin-right: 19px;
+    flex: 1; 
+    background: none; /* နောက်ခံအရောင် ဖြုတ်လိုက်သည် */
+    border: none;     /* ဘောင် ဖြုတ်လိုက်သည် */
+    color: #ff4d4d;   /* အသည်းပုံ အရောင် */
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 18px;
+    justify-content: flex-end; /* ညာဘက်အစွန် ကပ်ထားရန် */
+    font-size: 24px;  /* အသည်းပုံကို နည်းနည်း ပိုကြီးလိုက်သည် */
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.2s;
+    padding: 0;       /* ပိုနေသော padding များ ဖြုတ်သည် */
+    -webkit-tap-highlight-color: transparent; /* ဖုန်းမှာနှိပ်ရင် နောက်ခံအရောင် မလင်းလာစေရန် */
+}
+
+/* အလယ်စာသား Styling */
+.header-middle-text {
+    flex: 3; /* အလယ်စာသားအတွက် နေရာပိုပေးမည် */
+    text-align: center;
+    font-size: 13px; /* စာသားရှည်ရင် ဆံ့အောင် နည်းနည်းသေးထားပါသည် */
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap; /* စာကြောင်းမဆင်းစေရန် */
 }
 
 .support-header-btn:active {
-    transform: scale(0.9);
+    transform: scale(1.2); /* နှိပ်လိုက်ရင် အသည်းပုံလေး ကြွလာမည် */
     background: rgba(255, 255, 255, 0.4);
 }
 
@@ -1108,9 +1148,9 @@ textarea {
 }
 
 .logo {
+    flex: 1; /* နေရာယူမှု ပုံသေသတ်မှတ်ရန် */
     display: flex;
-    align-items: center;
-    padding: 5px 0;
+    justify-content: flex-start;
 }
 
 /* Long press လုပ်နေစဉ် ပုံရိပ်ကို အနည်းငယ် မှိန်သွားစေရန် (Feedback) */
